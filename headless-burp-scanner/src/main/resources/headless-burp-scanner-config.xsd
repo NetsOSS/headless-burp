@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<xsd:schema xmlns="http://nets.eu/burp/config"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://nets.eu/burp/config"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified">
+
+  <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+
+  <xsd:annotation>
+    <xsd:documentation>
+      <![CDATA[
+      Headless Burp POC Config Schema
+      Namespace definitions to define a schema for Headless Burp POC
+      ]]>
+    </xsd:documentation>
+  </xsd:annotation>
+
+  <xsd:element name="config">
+    <xsd:annotation>
+      <xsd:documentation>
+        <![CDATA[
+        Root element for headless burp poc config
+        ]]>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="reportType" type="reportType"/>
+        <xsd:element name="scope" type="scope" minOccurs="0" maxOccurs="1"/>
+        <xsd:element name="targetSitemap" type="xsd:anyURI" minOccurs="0" maxOccurs="1"/>
+        <xsd:element name="false-positives" type="false-positives" minOccurs="0" maxOccurs="1"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:simpleType name="reportType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="JUNIT"/>
+      <xsd:enumeration value="HTML"/>
+      <xsd:enumeration value="XML"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:complexType name="scope">
+    <xsd:annotation>
+      <xsd:documentation>
+        <![CDATA[
+        URLs to be added to the scope for Burp scanner
+        ]]>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="url" type="xsd:string" maxOccurs="unbounded" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>
+            <![CDATA[
+            Full URL to be added to the scope
+            ]]>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="exclusions" type="exclusions" minOccurs="0" maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="exclusions">
+    <xsd:annotation>
+      <xsd:documentation>
+        <![CDATA[
+        List of false positives
+        ]]>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="exclusion" type="xsd:string" maxOccurs="unbounded" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>
+            <![CDATA[
+            Exclusions
+            ]]>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:complexType name="false-positives">
+    <xsd:annotation>
+      <xsd:documentation>
+        <![CDATA[
+        List of false positives
+        ]]>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="issue" type="issue" maxOccurs="unbounded" minOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>
+            <![CDATA[
+            Issue to be marked as false positive
+            ]]>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="issue">
+    <xsd:sequence>
+      <xsd:element name="type" type="xsd:int">
+        <xsd:annotation>
+          <xsd:documentation>
+            <![CDATA[
+            Issue type
+            ]]>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="path" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation>
+            <![CDATA[
+            Path to the resource where issue has been found
+            ]]>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+</xsd:schema>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns="http://nets.eu/burp/config">
+  <reportType>JUNIT</reportType>
+  <scope>
+    <url><![CDATA[http://vm-stapp-95:20756/#/shipments]]></url>
+    <url><![CDATA[http://vm-stapp-95:20756/api/customers/identifiers?cacheBuster=1427106938056&searchTerm=982]]></url>
+    <url><![CDATA[http://vm-stapp-95:20756/#/shipments/83632855/documents]]></url>
+  </scope>
+  <false-positives>
+    <issue>
+      <type>6291632</type>
+      <path><![CDATA[.*.vendor.js]]></path>
+    </issue>
+    <issue>
+      <type>5245440</type>
+      <path><![CDATA[/]]></path>
+    </issue>
+  </false-positives>
+</config>

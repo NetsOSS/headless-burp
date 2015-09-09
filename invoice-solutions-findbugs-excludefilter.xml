@@ -1,0 +1,33 @@
+<FindBugsFilter>
+  <Match>
+    <Bug code="J2EE,EI2,EI,Se,SnVI"/>
+  </Match>
+  <Match>
+    <Bug pattern="REC_CATCH_EXCEPTION"/>
+  </Match>
+  <Match>
+    <Bug pattern="BC_UNCONFIRMED_CAST"/>
+  </Match>
+  <Match>
+    <Bug pattern="SIC_INNER_SHOULD_BE_STATIC_ANON"/>
+  </Match>
+  <Match>
+    <Bug pattern="DM_EXIT"/>
+  </Match>
+  <Match>
+    <Bug pattern="DM_CONVERT_CASE"/>
+  </Match>
+  <Match>
+    <Bug pattern="NP_PARAMETER_MUST_BE_NONNULL_BUT_MARKED_AS_NULLABLE"/>
+  </Match>
+
+  <!--headless burp specific exclusions-->
+  <Match>
+    <Class name="HelpMojo"/>
+    <Bug code="UI"/>
+  </Match>
+  <Match>
+    <Class name="burp.BurpExtender"/>
+    <Bug code="DE"/>
+  </Match>
+</FindBugsFilter>

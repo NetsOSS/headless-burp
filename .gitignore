@@ -1,0 +1,15 @@
+### Maven template
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+
+
+### Intellij
+*.iml
+.idea/
+*.ipr
+*.iws
