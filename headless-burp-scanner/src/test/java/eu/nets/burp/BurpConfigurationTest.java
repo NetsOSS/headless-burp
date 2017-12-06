@@ -24,7 +24,7 @@ public class BurpConfigurationTest {
 
         assertThat(burpConfiguration.getScanReportType()).isEqualTo("XML");
         assertThat(burpConfiguration.getReportFile().getName()).contains("burp-report");
-        assertThat(burpConfiguration.getReportFile().getName()).endsWith("XML");
+        assertThat(burpConfiguration.getReportFile().getName()).endsWith("xml");
     }
 
 }

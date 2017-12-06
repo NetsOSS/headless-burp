@@ -11,23 +11,26 @@ import static com.google.common.base.Throwables.getStackTraceAsString;
 
 public class BurpExtender implements IBurpExtender, IProxyListener, IExtensionStateListener {
 
+    @Option(name = "-i", aliases = "--initial-state", usage = "Initial Burp state file", metaVar = "<file>")
+    private File initialBurpState = new File("initial-burp-proxy.state");
+
+    @Option(name = "-o", aliases = "--output-state", usage = "Output Burp state file", metaVar = "<file>")
+    private File outputBurpState = new File("output-burp-proxy.state");
+
+    @Option(name = "--proxy-port", usage = "Proxy port")
+    private int proxyPort = 4646;
+
+    @Option(name = "--shutdown-port", usage = "Shutdown port")
+    private int shutdownPort = 4444;
+
+    @Option(name = "--shutdown-key", usage = "Shutdown Key")
+    private String shutdownKey = "SHUTDOWN";
+
     @Option(name = "-p", aliases = "--prompt", usage = "Indicates whether to prompt the user to confirm the shutdown", hidden = true)
     private boolean promptUserOnShutdown = false;
 
-    @Option(name = "-s", aliases = "--state", usage = "Burp state file", metaVar = "<file>")
-    private File burpStateFile = new File("burpstate");
-
     @Option(name = "-v", aliases = "--verbose", usage = "Enable verbose output")
     private boolean verbose = false;
-
-    @Option(name = "--proxyPort", usage = "Proxy port")
-    private int proxyPort = 4646;
-
-    @Option(name = "--shutdownPort", usage = "Shutdown port")
-    private int shutdownPort = 4444;
-
-    @Option(name = "--shutdownKey", usage = "Shutdown Key")
-    private String shutdownKey = "SHUTDOWN";
 
     private IBurpExtenderCallbacks callbacks;
 
@@ -73,9 +76,9 @@ public class BurpExtender implements IBurpExtender, IProxyListener, IExtensionSt
             log("Arguments to headless burp: " + Joiner.on(" ").join(args));
             parser.parseArgument(args);
 
-            if (burpStateFile != null && burpStateFile.exists()) {
-                log("Restoring burp state from file: [" + burpStateFile.getName() + "]");
-                callbacks.restoreState(burpStateFile);
+            if (initialBurpState != null && initialBurpState.exists()) {
+                log("Restoring burp state from file: [" + initialBurpState.getName() + "]");
+                callbacks.restoreState(initialBurpState);
             }
 
             Map<String, String> burpConfig = callbacks.saveConfig();
@@ -123,11 +126,9 @@ public class BurpExtender implements IBurpExtender, IProxyListener, IExtensionSt
      */
     private void registerShutdownListenerAndWaitForShutdown() throws Exception {
         ShutdownListener shutdownHandler = new ShutdownListener(shutdownPort, shutdownKey, () -> {
-            File saveState = new File("headless-burp-proxy.state");
-
             log("Received request to stop proxy");
-            log("Saving the state to " + saveState.getAbsolutePath());
-            callbacks.saveState(saveState);
+            log("Saving the state to " + outputBurpState.getAbsolutePath());
+            callbacks.saveState(outputBurpState);
 
             log("Exiting burpsuite...");
             callbacks.exitSuite(promptUserOnShutdown);

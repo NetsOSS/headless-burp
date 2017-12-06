@@ -23,11 +23,11 @@ public class JUnitXmlGeneratorTest {
         // When
         JUnitXmlGenerator.generateJUnitReportFromBurpReport(burpReportFile, jUnitReportXmlFile);
 
-        /*// Then
+        // Then
         File expected = new File("src/test/resources/TEST-burp-report.xml");
         assertThat(jUnitReportXmlFile).exists();
-        String actualContent = Files.toString(jUnitReportXmlFile, Charsets.UTF_8);
-        assertThat(actualContent).isXmlEqualToContentOf(expected);*/
+        String actualContent = Files.asCharSource(jUnitReportXmlFile, Charsets.UTF_8).read();
+        assertThat(actualContent).isXmlEqualToContentOf(expected);
     }
 
 }

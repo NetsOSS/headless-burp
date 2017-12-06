@@ -10,8 +10,17 @@ import org.codehaus.plexus.util.StringUtils;
 
 import static eu.nets.burp.maven.Utils.encloseInDoubleQuotes;
 
+/**
+ * Maven plugin that allows you to run the Burp Scanner tool in headless mode.
+ */
 @Mojo(name = "start-scan")
 public class StartBurpScannerMojo extends AbstractBurpMojo {
+
+    /**
+     * Location of the burpSuite state file to restore to.
+     */
+    @Parameter
+    private File burpState;
 
     /**
      * Location of the burp headless configuration file.
@@ -36,9 +45,9 @@ public class StartBurpScannerMojo extends AbstractBurpMojo {
             command.add("-c");
             command.add(encloseInDoubleQuotes(burpConfig.getAbsolutePath()));
         }
-        if (getBurpState() != null) {
+        if (burpState != null && burpState.canRead()) {
             command.add("-s");
-            command.add(encloseInDoubleQuotes(getBurpState().getAbsolutePath()));
+            command.add(encloseInDoubleQuotes(burpState.getAbsolutePath()));
         }
         if (isPromptOnExit()) {
             command.add("-p");

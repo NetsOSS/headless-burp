@@ -2,9 +2,9 @@
 <config xmlns="http://nets.eu/burp/config">
   <reportType>JUNIT</reportType>
   <scope>
-    <url><![CDATA[http://vm-stapp-95:20756/#/shipments]]></url>
-    <url><![CDATA[http://vm-stapp-95:20756/api/customers/identifiers?cacheBuster=1427106938056&searchTerm=982]]></url>
-    <url><![CDATA[http://vm-stapp-95:20756/#/shipments/83632855/documents]]></url>
+    <url><![CDATA[http://localhost:20756/#/shipments]]></url>
+    <url><![CDATA[http://localhost:20756/api/customers/identifiers?cacheBuster=1427106938056&searchTerm=982]]></url>
+    <url><![CDATA[http://localhost:20756/#/shipments/83632855/documents]]></url>
   </scope>
   <false-positives>
     <issue>

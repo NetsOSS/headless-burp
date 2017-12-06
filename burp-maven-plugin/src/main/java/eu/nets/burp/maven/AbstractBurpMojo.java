@@ -14,22 +14,17 @@ import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugin.logging.Log;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.codehaus.plexus.util.IOUtil;
+import org.codehaus.plexus.util.StringUtils;
 
 public abstract class AbstractBurpMojo extends AbstractMojo {
 
-    private Log consoleLog = new StreamLog(System.out);
+    private final Log consoleLog = new StreamLog(System.out);
 
     /**
-     * Location of the burpsuite jar.
+     * Location of the burpSuite jar.
      */
     @Parameter(required = true)
     private File burpSuite;
-
-    /**
-     * Location of the burpsuite state file to restore to.
-     */
-    @Parameter
-    private File burpState;
 
     /**
      * Run headless.
@@ -88,6 +83,11 @@ public abstract class AbstractBurpMojo extends AbstractMojo {
 
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
+        if (burpSuite == null || !burpSuite.exists()) {
+            getLog().error("Could not find burpSuite jar");
+            getLog().debug("Skipping execution.");
+            return;
+        }
         if (skip) {
             getLog().debug("Skipping execution.");
             return;
@@ -95,10 +95,6 @@ public abstract class AbstractBurpMojo extends AbstractMojo {
 
         ProcessBuilder burp = createBurpProcessBuilder();
         execute(burp);
-
-        /*getLog().info("Starting headless burp " + getBurpExtenderToRun() + "...");
-        getLog().info(StringUtils.join(burp.command().iterator(), " "));
-        executeAndRedirectOutput(burp);*/
     }
 
     protected ProcessBuilder createBurpProcessBuilder() throws MojoExecutionException {
@@ -128,23 +124,7 @@ public abstract class AbstractBurpMojo extends AbstractMojo {
         return builder.build();
     }
 
-    public void executeAndRedirectOutput(ProcessBuilder processBuilder) {
-         /*final InputStream is = burp.getInputStream();
-        Thread infoLogThread = new Thread(() -> {
-            try {
-                BufferedReader burpOutputReader = new BufferedReader(new InputStreamReader(burp.getInputStream()));
-
-                for (String line = burpOutputReader.readLine(); line != null; line = burpOutputReader.readLine()) {
-                    getLog().info(line);
-                    getLog().info("\033[0m ");
-                }
-            } catch (IOException e) {
-                throw new RuntimeException("There was an error reading the output from Burp.", e);
-            } finally {
-                IOUtil.close(is);
-            }
-        });*/
-
+    protected void executeAndRedirectOutput(ProcessBuilder processBuilder) {
         Process process;
         try {
             process = processBuilder.start();
@@ -164,7 +144,7 @@ public abstract class AbstractBurpMojo extends AbstractMojo {
                 errorLogThread.join();
 
                 if (exitValue != 0) {
-                    throw new ProcessExecutionException("Error when ");
+                    throw new ProcessExecutionException("Error when running " + StringUtils.join(processBuilder.command().iterator(), " "));
                 }
 
             } catch (InterruptedException e) {
@@ -200,21 +180,17 @@ public abstract class AbstractBurpMojo extends AbstractMojo {
     }
 
     private static class ProcessExecutionException extends RuntimeException {
-        public ProcessExecutionException(String message) {
+        ProcessExecutionException(String message) {
             super(message);
         }
 
-        public ProcessExecutionException(Throwable cause) {
+        ProcessExecutionException(Throwable cause) {
             super(cause);
         }
     }
 
     public File getBurpSuite() {
         return burpSuite;
-    }
-
-    public File getBurpState() {
-        return burpState;
     }
 
     public boolean isHeadless() {
