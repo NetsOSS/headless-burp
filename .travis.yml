@@ -1,4 +1,8 @@
 sudo: false # faster builds
+env:
+  global:
+    - CC_TEST_REPORTER_ID=f8eae2122d2a3ec2def91515cdfb3197d3c975a8e48d767a4c84a6e9ea7814cf
+
 language: java
 jdk:
   - oraclejdk8
@@ -6,6 +10,17 @@ jdk:
 cache:
   directories:
     - $HOME/.m2
+
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+
+script:
+  - ./mvnw clean install
+
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
