@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    
+    <url>
+     <loc>https://NetsOSS.github.io/headless-burp/</loc>
+     <lastmod>2017-12-06</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>https://NetsOSS.github.io/headless-burp/getting-started/</loc>
+     <lastmod>2017-12-06</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+        
+    <url>
+     <loc>https://NetsOSS.github.io/headless-burp/background/background/</loc>
+     <lastmod>2017-12-06</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://NetsOSS.github.io/headless-burp/background/our-goal/</loc>
+     <lastmod>2017-12-06</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://NetsOSS.github.io/headless-burp/background/burp/</loc>
+     <lastmod>2017-12-06</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://NetsOSS.github.io/headless-burp/background/automation/</loc>
+     <lastmod>2017-12-06</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+        
+    <url>
+     <loc>https://NetsOSS.github.io/headless-burp/user-guide/maven-plugin/</loc>
+     <lastmod>2017-12-06</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://NetsOSS.github.io/headless-burp</loc>
+     <lastmod></lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+    <url>
+     <loc>https://NetsOSS.github.io/headless-burp/known-issues/</loc>
+     <lastmod>2017-12-06</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>https://NetsOSS.github.io/headless-burp/release-notes/release-notes-1.0/</loc>
+     <lastmod>2017-12-06</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+</urlset>
