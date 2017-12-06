@@ -7,6 +7,9 @@ pom.xml.next
 release.properties
 dependency-reduced-pom.xml
 
+### Maven Wrapper
+!.mvn/wrapper/maven-wrapper.jar
+
 ### Intellij
 *.iml
 .idea/
