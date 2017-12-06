@@ -22,7 +22,7 @@
         }, 
         {
             "location": "/getting-started/", 
-            "text": "Installation\n\n\nInstalling Burp on windows\n\n\nBefore installing \nBurp Suite\n, make sure you have Java 8 up and running, You can verify if you're already good to go with the following commands: \n\n\njava -version\n\n\n\n\n\n\nheadless-burp version requirements\n\n\nheadless-burp requires java \n= 1.8\n\n\n\n\nDownload Burp Suite from \nhere\n.\n\n\nFollow instructions on \nhttps://portswigger.net/burp/help/suite_gettingstarted.html\n\n\nInstalling Burp on a headless machine\n\n\njava -jar -Xmx1024m /path/to/burp.jar\n\n\n\n\nTODO: Add installation steps and screenshots", 
+            "text": "Installation\n\n\nInstalling Burp on windows\n\n\nBefore installing \nBurp Suite\n, make sure you have Java 8 up and running, You can verify if you're already good to go with the following commands: \n\n\njava -version\n\n\n\n\n\n\nheadless-burp version requirements\n\n\nheadless-burp requires java \n= 1.8\n\n\n\n\nDownload Burp Suite from \nhere\n.\n\n\nFollow instructions on \nhttps://portswigger.net/burp/help/suite_gettingstarted.html\n\n\nInstalling Burp on a headless machine\n\n\njava -jar -Xmx1024m /path/to/burp.jar\n\n\n\n\nTODO: Add installation steps and screenshots\n\n\nBuilding Documentation\n\n\npip install mkdocs\npip install mkdocs-material\npip install pymdown-extensions\n\nmkdocs serve\nmkdocs build --clean\n\nmkdocs gh-deploy --clean", 
             "title": "Getting Started"
         }, 
         {
@@ -39,6 +39,11 @@
             "location": "/getting-started/#installing-burp-on-a-headless-machine", 
             "text": "java -jar -Xmx1024m /path/to/burp.jar  TODO: Add installation steps and screenshots", 
             "title": "Installing Burp on a headless machine"
+        }, 
+        {
+            "location": "/getting-started/#building-documentation", 
+            "text": "pip install mkdocs\npip install mkdocs-material\npip install pymdown-extensions\n\nmkdocs serve\nmkdocs build --clean\n\nmkdocs gh-deploy --clean", 
+            "title": "Building Documentation"
         }, 
         {
             "location": "/background/background/", 
