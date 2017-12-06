@@ -51,8 +51,10 @@ public class StopBurpProxyMojo extends AbstractMojo {
             outputWriter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(), Charsets.UTF_8));
 
             outputWriter.write(key);
+            getLog().info("Burp proxy stopped.");
         } catch (Exception e) {
-            getLog().error("Couldn't connect to localhost:" + port, e);
+            getLog().error("Could not connect to localhost:" + port, e);
+            getLog().error("Could not stop Burp proxy");
         } finally {
             try {
                 IOUtil.close(outputWriter);
@@ -62,7 +64,6 @@ public class StopBurpProxyMojo extends AbstractMojo {
             } catch (Exception ex) {
                 getLog().error("Could not close socket: " + ex);
             }
-            getLog().info("Burp proxy stopped.");
         }
     }
 }

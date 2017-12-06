@@ -9,6 +9,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
@@ -54,9 +56,9 @@ public class BurpConfiguration {
         return Optional.of(config.getScope()).map(scope -> scope.getUrl()
                 .stream()
                 .map(this::getUrl)
-                .filter(url -> url != null)
+                .filter(Objects::nonNull)
                 .collect(Collectors.toList()))
-                .orElse(Collections.<URL>emptyList());
+                .orElse(Collections.emptyList());
     }
 
     private URL getUrl(String input) {
@@ -68,12 +70,12 @@ public class BurpConfiguration {
     }
 
     public List<Issue> getFalsePositives() {
-        return config.getFalsePositives() != null ? config.getFalsePositives().getIssue() : Collections.<Issue>emptyList();
+        return config.getFalsePositives() != null ? config.getFalsePositives().getIssue() : Collections.emptyList();
     }
 
     public File getReportFile() {
         String scanReportType = config.getReportType() != ReportType.HTML ? ReportType.XML.value() : ReportType.HTML.value();
-        return new File("burp-report" + "." + scanReportType);
+        return new File("burp-report" + "." + scanReportType.toLowerCase(Locale.ENGLISH));
     }
 
     public String getScanReportType() {
@@ -94,8 +96,8 @@ public class BurpConfiguration {
                 .map(exclusions -> exclusions.getExclusion()
                         .stream()
                         .map(this::getUrl)
-                        .filter(url -> url != null)
+                        .filter(Objects::nonNull)
                         .collect(Collectors.toList()))
-                .orElse(Collections.<URL>emptyList());
+                .orElse(Collections.emptyList());
     }
 }

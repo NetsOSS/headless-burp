@@ -27,6 +27,10 @@
     <Bug code="UI"/>
   </Match>
   <Match>
+    <Class name="eu.nets.burp.maven.HelpMojo"/>
+    <Bug code="UI"/>
+  </Match>
+  <Match>
     <Class name="burp.BurpExtender"/>
     <Bug code="DE"/>
   </Match>

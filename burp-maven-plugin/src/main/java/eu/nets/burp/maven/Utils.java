@@ -10,7 +10,7 @@ public class Utils {
     /**
      * Splits the path on / or \ and reconstructs the path with the file.separator character so it can be executed on any OS
      *
-     * @param path
+     * @param path path to file or directory
      * @return reconstructed path
      */
     public static String normalize(String path) {

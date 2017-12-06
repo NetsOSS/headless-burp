@@ -1,80 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites xmlns:base64="eu.nets.burp.JUnitXmlGenerator">
-  <testsuite errors="0" failures="3" name="BurpSuite" skipped="0"
-             tests="3" time="0">
-    <testcase
-        classname="Frameable response (potential Clickjacking)" name="http://vm-stapp-95:20756/">
+  <testsuite errors="0" failures="4" name="BurpSuite" skipped="0"
+             tests="4" time="0">
+    <testcase classname="Email addresses disclosed" name="http://localhost:5432/bower_components/angular/angular.js">
       <failure
-          message="Type: 5245344&#xa;Host: http://vm-stapp-95:20756&#xa;Location: /&#xa;&#xa;Background: It might be possible for a web page controlled by an attacker to load the content of this response within an iframe on the attacker's page. This may enable a &quot;clickjacking&quot; attack, in which the attacker's page overlays the target application's interface with a different interface provided by the attacker. By inducing victim users to perform actions such as mouse clicks and keystrokes, the attacker can cause them to unwittingly carry out actions within the application that is being targeted. This technique allows the attacker to circumvent defenses against cross-site request forgery, and may result in unauthorized actions.&lt;br>&lt;br>Note that this issue is being reported because the application's response does not set a suitable &lt;b>X-Frame-Options&lt;/b> header in order to prevent framing attacks. Some applications attempt to prevent these attacks from within the HTML page itself, using &quot;framebusting&quot; code. However, this type of defense is normally ineffective and can usually be circumvented by a skilled attacker.&#xa;&#xa;Remediation: You should review the application functions that are accessible from within the response, and determine whether they can be used by application users to perform any sensitive actions within the application. If so, then a framing attack targeting this response may result in unauthorized actions.&lt;br>&lt;br>To effectively prevent framing attacks, the application should return a response header with the name &lt;b>X-Frame-Options&lt;/b> and the value &lt;b>DENY&lt;/b> to prevent framing altogether, or the value &lt;b>SAMEORIGIN&lt;/b> to allow framing only by pages on the same origin as the response itself."
-          type="5245344"/>
+          message="Type: 6291968&#xa;Host: http://localhost:5432&#xa;Location: /bower_components/angular/angular.js&#xa;&#xa;Background: &lt;p>The presence of email addresses within application responses does not necessarily constitute a security vulnerability. Email addresses may appear intentionally within contact information, and many applications (such as web mail) include arbitrary third-party email addresses within their core content.&lt;/p>&#xa;&lt;p>However, email addresses of developers and other individuals (whether appearing on-screen or hidden within page source) may disclose information that is useful to an attacker; for example, they may represent usernames that can be used at the application's login, and they may be used in social engineering attacks against the organization's personnel. Unnecessary or excessive disclosure of email addresses may also lead to an increase in the volume of spam email received.&lt;/p>&#xa;&#xa;Remediation: &lt;p>Consider removing any email addresses that are unnecessary, or replacing personal addresses with anonymous mailbox addresses (such as helpdesk@example.com).&lt;/p>&#xa;&lt;p>To reduce the quantity of spam sent to anonymous mailbox addresses, consider hiding the email address and instead providing a form that generates the email server-side, protected by a CAPTCHA if necessary. &lt;/p>" type="6291968"/>
       <system-out><![CDATA[Request:
-GET / HTTP/1.1
-Host: vm-stapp-95:20756
+GET /bower_components/angular/angular.js HTTP/1.1
+Host: localhost:5432
 Accept: */*
 Accept-Language: en
 User-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0)
 Connection: close
+Referer: http://localhost:5432/
+Cookie: JSESSIONID=A7CE70CB454E645420264FBF11F86C70; CSRF-TOKEN=dd5b95d2-f210-4238-9c0b-a582450e39a8
 
-Response:
-HTTP/1.1 200 OK&#13;
-Date: Mon, 23 Mar 2015 14:57:43 GMT&#13;
-Last-Modified: Thu, 19 Mar 2015 16:37:10 GMT&#13;
-Content-Type: text/html;charset=utf-8&#13;
-Content-Length: 1304&#13;
-Connection: close&#13;
-Server: Jetty(9.2.9.v20150224)&#13;
-&#13;
-&lt;!DOCTYPE html&gt;&lt;!--[if lt IE 7]&gt; &lt;html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"&gt; &lt;![endif]--&gt;&lt;!--[if IE 7]&gt; &lt;html lang="en" class="no-js lt-ie9 lt-ie8"&gt; &lt;![endif]--&gt;&lt;!--[if IE 8]&gt; &lt;html lang="en" class="no-js lt-ie9"&gt; &lt;![endif]--&gt;&lt;!--[if gt IE 8]&gt;&lt;!--&gt; &lt;html lang=en class=no-js&gt; &lt;!--&lt;![endif]--&gt; &lt;head&gt; &lt;meta charset=utf-8&gt; &lt;meta http-equiv=X-UA-Compatible content="IE=edge"&gt; &lt;meta name=viewport content="width=device-width,initial-scale=1"&gt; &lt;title&gt;Invoice Solutions Transaction Register&lt;/title&gt; &lt;!-- Place favicon.ico and apple-touch-icon.png in the root directory --&gt; &lt;link rel=stylesheet href=assets/styles/eb2d1fc4.vendor.css&gt; &lt;link rel=stylesheet href=assets/styles/580b22bd.main.css&gt; &lt;link rel=stylesheet href=//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.mi...
-                ]]></system-out>
-    </testcase>
-    <testcase classname="TRACE method is enabled" name="http://vm-stapp-95:20756/">
-      <failure
-          message="Type: 5245440&#xa;Host: http://vm-stapp-95:20756&#xa;Location: /&#xa;&#xa;Background: The TRACE method is designed for diagnostic purposes. If enabled, the web server will respond to requests which use the TRACE method by echoing in its response the exact request which was received.&lt;br>&lt;br>Although this behavior is apparently harmless in itself, it can sometimes be leveraged to support attacks against other application users. If an attacker can find a way of causing a user to make a TRACE request, and can retrieve the response to that request, then the attacker will be able to capture any sensitive data which is included in the request by the user's browser, for example session cookies or credentials for platform-level authentication. This may exacerbate the impact of other vulnerabilities, such as cross-site scripting.&#xa;&#xa;Remediation: The TRACE method should be disabled on the web server."
-          type="5245440"/>
-      <system-out><![CDATA[Request:
-TRACE / HTTP/1.0
-Host: vm-stapp-95
-Cookie: 4c7b23d190
-
-Response:
-HTTP/1.1 200 OK&#13;
-Date: Mon, 23 Mar 2015 14:57:44 GMT&#13;
-Content-Type: message/http; charset=UTF-8&#13;
-Content-Length: 72&#13;
-Server: Jetty(9.2.9.v20150224)&#13;
-&#13;
-TRACE /dist/index.html HTTP/1.0&#13;
-Cookie: 4c7b23d190&#13;
-Host: vm-stapp-95&#13;
 ]]></system-out>
     </testcase>
-    <testcase classname="Source code disclosure" name="http://vm-stapp-95:20756/scripts/890f3cd9.vendor.js">
+    <testcase classname="Email addresses disclosed" name="http://localhost:5432/bower_components/angular-local-storage/dist/angular-local-storage.js">
       <failure
-          message="Type: 6291632&#xa;Host: http://vm-stapp-95:20756&#xa;Location: /scripts/890f3cd9.vendor.js&#xa;&#xa;Background: Server-side source code may contain sensitive information which can help an attacker formulate attacks against the application.&#xa;&#xa;Remediation: Server-side source code is normally disclosed to clients as a result of typographical errors in scripts or because of misconfiguration, such as failing to grant executable permissions to a script or directory. You should review the cause of the code disclosure and prevent it from happening."
-          type="6291632"/>
+          message="Type: 6291968&#xa;Host: http://localhost:5432&#xa;Location: /bower_components/angular-local-storage/dist/angular-local-storage.js&#xa;&#xa;Background: &lt;p>The presence of email addresses within application responses does not necessarily constitute a security vulnerability. Email addresses may appear intentionally within contact information, and many applications (such as web mail) include arbitrary third-party email addresses within their core content.&lt;/p>&#xa;&lt;p>However, email addresses of developers and other individuals (whether appearing on-screen or hidden within page source) may disclose information that is useful to an attacker; for example, they may represent usernames that can be used at the application's login, and they may be used in social engineering attacks against the organization's personnel. Unnecessary or excessive disclosure of email addresses may also lead to an increase in the volume of spam email received.&lt;/p>&#xa;&#xa;Remediation: &lt;p>Consider removing any email addresses that are unnecessary, or replacing personal addresses with anonymous mailbox addresses (such as helpdesk@example.com).&lt;/p>&#xa;&lt;p>To reduce the quantity of spam sent to anonymous mailbox addresses, consider hiding the email address and instead providing a form that generates the email server-side, protected by a CAPTCHA if necessary. &lt;/p>" type="6291968"/>
       <system-out><![CDATA[Request:
-GET /scripts/890f3cd9.vendor.js HTTP/1.1
-Host: vm-stapp-95:20756
+GET /bower_components/angular-local-storage/dist/angular-local-storage.js HTTP/1.1
+Host: localhost:5432
 Accept: */*
 Accept-Language: en
 User-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0)
 Connection: close
-Referer: http://vm-stapp-95:20756/
+Referer: http://localhost:5432/
+Cookie: JSESSIONID=A7CE70CB454E645420264FBF11F86C70; CSRF-TOKEN=dd5b95d2-f210-4238-9c0b-a582450e39a8
 
-Response:
-HTTP/1.1 200 OK&#13;
-Date: Mon, 23 Mar 2015 14:57:51 GMT&#13;
-Cache-Control: max-age=2678400000, public&#13;
-Pragma: cache&#13;
-Expires: Thu, 23 Apr 2015 14:57:51 GMT&#13;
-Last-Modified: Thu, 19 Mar 2015 16:42:07 GMT&#13;
-Content-Type: application/javascript; charset=UTF-8&#13;
-Content-Length: 744093&#13;
-Connection: close&#13;
-Server: Jetty(9.2.9.v20150224)&#13;
-&#13;
-window.Modernizr=function(a,b,c){function d(a){t.cssText=a}function e(a,b){return d(x.join(a+";")+(b||""))}function f(a,b){return typeof a===b}function g(a,b){return!!~(""+a).indexOf(b)}function h(a,b){for(var d in a){var e=a[d];if(!g(e,"-")&amp;&amp;t[e]!==c)return"pfx"==b?e:!0}return!1}function i(a,b,d){for(var e in a){var g=b[a[e]];if(g!==c)return d===!1?a[e]:f(g,"function")?g.bind(d||b):g}return!1}function j(a,b,c){var d=a.charAt(0).toUpperCase()+a.slice(1),e=(a+" "+z.join(d+" ")+d).split(" ");return f(b,"string")||f(b,"undefined")?h(e,b):(e=(a+" "+A.join(d+" ")+d).split(" "),i(e,b,c))}function k(){o.input=function(c){for(var d=0,e=c.length;e&gt;d;d++)E[c[d]]=!!(c[d]in ...
-                ]]></system-out>
+]]></system-out>
+    </testcase>
+    <testcase classname="Email addresses disclosed" name="http://localhost:5432/bower_components/angular-sanitize/angular-sanitize.js">
+      <failure
+          message="Type: 6291968&#xa;Host: http://localhost:5432&#xa;Location: /bower_components/angular-sanitize/angular-sanitize.js&#xa;&#xa;Background: &lt;p>The presence of email addresses within application responses does not necessarily constitute a security vulnerability. Email addresses may appear intentionally within contact information, and many applications (such as web mail) include arbitrary third-party email addresses within their core content.&lt;/p>&#xa;&lt;p>However, email addresses of developers and other individuals (whether appearing on-screen or hidden within page source) may disclose information that is useful to an attacker; for example, they may represent usernames that can be used at the application's login, and they may be used in social engineering attacks against the organization's personnel. Unnecessary or excessive disclosure of email addresses may also lead to an increase in the volume of spam email received.&lt;/p>&#xa;&#xa;Remediation: &lt;p>Consider removing any email addresses that are unnecessary, or replacing personal addresses with anonymous mailbox addresses (such as helpdesk@example.com).&lt;/p>&#xa;&lt;p>To reduce the quantity of spam sent to anonymous mailbox addresses, consider hiding the email address and instead providing a form that generates the email server-side, protected by a CAPTCHA if necessary. &lt;/p>" type="6291968"/>
+      <system-out><![CDATA[Request:
+GET /bower_components/angular-sanitize/angular-sanitize.js HTTP/1.1
+Host: localhost:5432
+Accept: */*
+Accept-Language: en
+User-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0)
+Connection: close
+Referer: http://localhost:5432/
+Cookie: JSESSIONID=A7CE70CB454E645420264FBF11F86C70; CSRF-TOKEN=dd5b95d2-f210-4238-9c0b-a582450e39a8
+
+]]></system-out>
+    </testcase>
+    <testcase classname="Email addresses disclosed" name="http://localhost:5432/bower_components/ng-file-upload/ng-file-upload.js">
+      <failure
+          message="Type: 6291968&#xa;Host: http://localhost:5432&#xa;Location: /bower_components/ng-file-upload/ng-file-upload.js&#xa;&#xa;Background: &lt;p>The presence of email addresses within application responses does not necessarily constitute a security vulnerability. Email addresses may appear intentionally within contact information, and many applications (such as web mail) include arbitrary third-party email addresses within their core content.&lt;/p>&#xa;&lt;p>However, email addresses of developers and other individuals (whether appearing on-screen or hidden within page source) may disclose information that is useful to an attacker; for example, they may represent usernames that can be used at the application's login, and they may be used in social engineering attacks against the organization's personnel. Unnecessary or excessive disclosure of email addresses may also lead to an increase in the volume of spam email received.&lt;/p>&#xa;&#xa;Remediation: &lt;p>Consider removing any email addresses that are unnecessary, or replacing personal addresses with anonymous mailbox addresses (such as helpdesk@example.com).&lt;/p>&#xa;&lt;p>To reduce the quantity of spam sent to anonymous mailbox addresses, consider hiding the email address and instead providing a form that generates the email server-side, protected by a CAPTCHA if necessary. &lt;/p>" type="6291968"/>
+      <system-out><![CDATA[Request:
+GET /bower_components/ng-file-upload/ng-file-upload.js HTTP/1.1
+Host: localhost:5432
+Accept: */*
+Accept-Language: en
+User-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0)
+Connection: close
+Referer: http://localhost:5432/
+Cookie: JSESSIONID=A7CE70CB454E645420264FBF11F86C70; CSRF-TOKEN=dd5b95d2-f210-4238-9c0b-a582450e39a8
+
+]]></system-out>
     </testcase>
   </testsuite>
 </testsuites>

@@ -15,8 +15,8 @@
   <dependencies>
     <!-- burp api -->
     <dependency>
-      <groupId>eu.nets.burp</groupId>
-      <artifactId>burp-api</artifactId>
+      <groupId>net.portswigger.burp.extender</groupId>
+      <artifactId>burp-extender-api</artifactId>
     </dependency>
 
     <!-- utilities -->

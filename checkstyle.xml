@@ -74,13 +74,13 @@
     <property name="message" value="Line has trailing spaces."/>
   </module>
 
-  <module name="SuppressionCommentFilter">
-    <property name="offCommentFormat" value="CHECKSTYLE:OFF"/>
-    <property name="onCommentFormat" value="CHECKSTYLE:ON"/>
-    <property name="checkFormat" value=".*"/>
-  </module>
-
   <module name="TreeWalker">
+
+    <module name="SuppressionCommentFilter">
+      <property name="offCommentFormat" value="CHECKSTYLE:OFF"/>
+      <property name="onCommentFormat" value="CHECKSTYLE:ON"/>
+      <property name="checkFormat" value=".*"/>
+    </module>
 
     <property name="cacheFile" value="${cacheFile}"/>
 
@@ -109,10 +109,10 @@
       <property name="format" value="^[a-z][a-zA-Z0-9]*$"/>
       <property name="tokens" value="VARIABLE_DEF, PARAMETER_DEF"/>
     </module>
-    <module name="LocalVariableName">
-      <property name="format" value="^[a-z][a-zA-Z0-9]*$"/>
-      <property name="tokens" value="PARAMETER_DEF"/>
-    </module>
+    <!--<module name="LocalVariableName">-->
+      <!--<property name="format" value="^[a-z][a-zA-Z0-9]*$"/>-->
+      <!--<property name="tokens" value="PARAMETER_DEF"/>-->
+    <!--</module>-->
     <module name="MemberName">
       <property name="format" value="^[a-z][a-zA-Z0-9_]*$"/>
       <property name="applyToPublic" value="true"/>
@@ -232,7 +232,7 @@
     </module>
     <module name="ParenPad">
       <property name="option" value="nospace"/>
-      <property name="tokens" value="CTOR_CALL, LPAREN, METHOD_CALL, RPAREN, SUPER_CTOR_CALL"/>
+      <property name="tokens" value="CTOR_CALL, METHOD_CALL, SUPER_CTOR_CALL"/>
     </module>
     <module name="TypecastParenPad">
       <property name="option" value="nospace"/>
@@ -253,7 +253,7 @@
       <property name="allowInSwitchCase" value="false"/>
     </module>
     <module name="EmptyBlock">
-      <property name="option" value="stmt"/>
+      <property name="option" value="STATEMENT"/>
       <property name="tokens" value="LITERAL_CATCH, LITERAL_DO,
                                            LITERAL_ELSE, LITERAL_FINALLY, LITERAL_IF, LITERAL_FOR,
                                            LITERAL_TRY, LITERAL_WHILE, INSTANCE_INIT, STATIC_INIT"/>
