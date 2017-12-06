@@ -1,0 +1,50 @@
+# Project information
+site_name: 'Headless Burp'
+site_description: 'Provides a suite of Burp extensions and a maven plugin to automate security tests using BurpSuite.'
+site_author: 'Anand Sudhir Prayaga'
+site_url: 'https://NetsOSS.github.io/headless-burp'
+
+# Repository
+repo_name: 'headless-burp'
+repo_url: 'https://github.com/NetsOSS/headless-burp'
+
+# Documentation and theme
+docs_dir: docs
+theme: material
+
+# Extensions
+markdown_extensions:
+  - admonition
+  - codehilite(guess_lang=false)
+  - footnotes
+  - meta
+  - toc(permalink=true)
+  - pymdownx.arithmatex
+  - pymdownx.betterem(smart_enable=all)
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist(custom_checkbox=true)
+  - pymdownx.tilde
+
+pages:
+  - 'Introduction': 'index.md'
+  - 'Getting Started': 'getting-started.md'
+  - 'Background':
+    - 'Background': 'background/background.md'
+    - 'Our Goal': 'background/our-goal.md'
+    - 'Burp': 'background/burp.md'
+    - 'Automation': 'background/automation.md'
+  - 'User Guide':
+    - 'Maven Plugin': 'user-guide/maven-plugin.md'
+    - 'Burp Extensions':
+      - 'Headless Burp Proxy': 'user-guide/burp-extensions/headless-burp-proxy.md'
+      - 'Headless Burp Scanner': 'user-guide/burp-extensions/headless-burp-scanner.md'
+  - 'Known Issues & Limitations': 'known-issues.md'
+  - 'Release Notes': 'release-notes/release-notes-1.0.md'
