@@ -84,6 +84,8 @@
   </dependencies>
 
   <build>
+    <defaultGoal>clean install</defaultGoal>
+
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -221,6 +223,9 @@
             <goals>
               <goal>report</goal>
             </goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/coverage/jacoco</outputDirectory>
+            </configuration>
           </execution>
         </executions>
       </plugin>
@@ -237,6 +242,13 @@
       </activation>
       <properties>
         <checkstyle-config.location>${basedir}/..</checkstyle-config.location>
+      </properties>
+    </profile>
+    <profile>
+      <id>quick</id>
+      <properties>
+        <checkstyle.skip>true</checkstyle.skip>
+        <findbugs.skip>true</findbugs.skip>
       </properties>
     </profile>
   </profiles>
