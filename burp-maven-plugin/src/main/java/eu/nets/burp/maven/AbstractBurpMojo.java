@@ -10,7 +10,6 @@ import java.util.List;
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
-import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugin.logging.Log;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.codehaus.plexus.util.IOUtil;
@@ -51,7 +50,7 @@ public abstract class AbstractBurpMojo extends AbstractMojo {
     private boolean skip;
 
     /**
-     * groupId of the plugin
+     * groupId of the plugin.
      */
     @Parameter(defaultValue = "${plugin.groupId}", readonly = true)
     private String pluginGroupId;
@@ -72,17 +71,16 @@ public abstract class AbstractBurpMojo extends AbstractMojo {
     protected abstract boolean shouldWaitForProcessToComplete();
 
     /**
-     * Build Commandline arguments for the burp extension
+     * Build Commandline arguments for the burp extension.
      *
      * @return Commandline arguments for the burp extension
-     * @throws MojoExecutionException
      */
-    protected abstract List<String> createBurpCommandLine() throws MojoExecutionException;
+    protected abstract List<String> createBurpCommandLine();
 
-    protected abstract void execute(ProcessBuilder processBuilder) throws MojoExecutionException;
+    protected abstract void execute(ProcessBuilder processBuilder);
 
     @Override
-    public void execute() throws MojoExecutionException, MojoFailureException {
+    public void execute() throws MojoExecutionException {
         if (burpSuite == null || !burpSuite.exists()) {
             getLog().error("Could not find burpSuite jar");
             getLog().debug("Skipping execution.");
@@ -97,7 +95,7 @@ public abstract class AbstractBurpMojo extends AbstractMojo {
         execute(burp);
     }
 
-    protected ProcessBuilder createBurpProcessBuilder() throws MojoExecutionException {
+    protected ProcessBuilder createBurpProcessBuilder() {
         List<String> burpCommandLine = createBurpCommandLine();
 
         String extensionClassPath = getBurpExtensionClasspath();

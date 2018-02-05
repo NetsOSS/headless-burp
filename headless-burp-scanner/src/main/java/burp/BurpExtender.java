@@ -10,7 +10,6 @@ import eu.nets.burp.config.ReportType;
 import java.io.File;
 import java.net.URL;
 import java.time.Instant;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import org.kohsuke.args4j.CmdLineException;
@@ -82,7 +81,7 @@ public class BurpExtender implements IBurpExtender, IHttpListener, IScannerListe
     }
 
     /**
-     * Add {@link URL}s from the sitemap to scope and send them to the Burp scanner
+     * Add {@link URL}s from the sitemap to scope and send them to the Burp scanner.
      *
      * @param siteMapUrlPrefix Base URL to scan from
      */
@@ -110,7 +109,7 @@ public class BurpExtender implements IBurpExtender, IHttpListener, IScannerListe
     }
 
     /**
-     * Add the {@link URL}s to scope and send them to the Burp spider
+     * Add the {@link URL}s to scope and send them to the Burp spider.
      *
      * @param urls list of {@link URL}s to be scanned
      */
@@ -131,7 +130,7 @@ public class BurpExtender implements IBurpExtender, IHttpListener, IScannerListe
     }
 
     /**
-     * Parse and process the command line arguments and verify and load the configuration file supplied by the user
+     * Parse and process the command line arguments and verify and load the configuration file supplied by the user.
      *
      * @param args The command line arguments that were passed to Burp on startup
      */
@@ -220,14 +219,7 @@ public class BurpExtender implements IBurpExtender, IHttpListener, IScannerListe
 
         try {
             while (!scanQueueItems.isEmpty()) {
-                Iterator<IScanQueueItem> iterator = scanQueueItems.iterator();
-                while (iterator.hasNext()) {
-                    IScanQueueItem scanQueueItem = iterator.next();
-                    if (100 == scanQueueItem.getPercentageComplete()) {
-                        iterator.remove();
-                    }
-                }
-
+                scanQueueItems.removeIf(scanQueueItem -> 100 == scanQueueItem.getPercentageComplete());
                 log(scanQueueItems.size() + " remaining items in scan queue at " + Instant.now());
 
                 Thread.yield();
@@ -261,7 +253,7 @@ public class BurpExtender implements IBurpExtender, IHttpListener, IScannerListe
     }
 
     /**
-     * Check if the provided issue is in the configured falsePositives list
+     * Check if the provided issue is in the configured falsePositives list.
      *
      * @param issue Issue found by the scanner
      * @return {@code true} if Issue is in the configured falsePositives list, otherwise {@code false}
@@ -277,7 +269,7 @@ public class BurpExtender implements IBurpExtender, IHttpListener, IScannerListe
     }
 
     /**
-     * Generate a report for issues found by the Scanner
+     * Generate a report for issues found by the Scanner.
      *
      * @param reportType     The format to be used in the report. Accepted values are HTML, XML and JUNIT.
      * @param burpReportFile The {@link File} to which the report will be saved
@@ -289,8 +281,8 @@ public class BurpExtender implements IBurpExtender, IHttpListener, IScannerListe
         if (reportType == ReportType.JUNIT) {
             log("Generating JUnit report");
 
-            File jUnitReportFile = new File(burpReportFile.getParentFile(), "TEST-burp-scan.xml");
-            JUnitXmlGenerator.generateJUnitReportFromBurpReport(burpReportFile, jUnitReportFile);
+            File junitReportFile = new File(burpReportFile.getParentFile(), "TEST-burp-scan.xml");
+            JUnitXmlGenerator.generateJUnitReportFromBurpReport(burpReportFile, junitReportFile);
 
             log("Generating HTML report");
             callbacks.generateScanReport("HTML", scanIssues.toArray(new IScanIssue[scanIssues.size()]), new File("burp-report.html"));

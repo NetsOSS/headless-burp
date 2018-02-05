@@ -14,7 +14,7 @@ import javax.xml.transform.stream.StreamSource;
 
 public class JUnitXmlGenerator {
 
-    public static void generateJUnitReportFromBurpReport(File burpReportFile, File jUnitReportFile) {
+    public static void generateJUnitReportFromBurpReport(File burpReportFile, File junitReportFile) {
         try {
             URL burpToJUnitXslUrl = Resources.getResource("burp-to-junit.xsl");
             StreamSource burpToJunitXsl = new StreamSource(burpToJUnitXslUrl.openStream());
@@ -23,7 +23,7 @@ public class JUnitXmlGenerator {
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             transformer.transform(input, new StreamResult(outputStream));
 
-            Files.write(outputStream.toByteArray(), jUnitReportFile);
+            Files.write(outputStream.toByteArray(), junitReportFile);
         } catch (Exception e) {
             throw new RuntimeException("Could not generate JUnit report", e);
         }

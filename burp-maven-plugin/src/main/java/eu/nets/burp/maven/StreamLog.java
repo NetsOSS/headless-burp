@@ -4,7 +4,7 @@ import java.io.PrintStream;
 import org.apache.maven.plugin.logging.Log;
 
 /**
- * a Simple Maven Log that outputs to a Stream
+ * A Simple Maven Log that outputs to a Stream.
  */
 class StreamLog implements Log {
 
@@ -25,37 +25,37 @@ class StreamLog implements Log {
         this.level = level;
     }
 
-    private final PrintStream s;
+    private final PrintStream printStream;
 
     StreamLog(PrintStream s) {
-        this.s = s;
+        this.printStream = s;
     }
 
     @Override
     public void debug(CharSequence content) {
         if (isDebugEnabled()) {
-            s.println(content);
+            printStream.println(content);
         }
     }
 
     @Override
     public void debug(CharSequence content, Throwable error) {
         if (isDebugEnabled()) {
-            s.println(content);
+            printStream.println(content);
         }
     }
 
     @Override
     public void debug(Throwable error) {
         if (isDebugEnabled()) {
-            error.printStackTrace(s);
+            error.printStackTrace(printStream);
         }
     }
 
     @Override
     public void error(CharSequence content) {
         if (isErrorEnabled()) {
-            s.println(content);
+            printStream.println(content);
         }
     }
 
@@ -68,14 +68,14 @@ class StreamLog implements Log {
     @Override
     public void error(Throwable error) {
         if (isErrorEnabled()) {
-            error.printStackTrace(s);
+            error.printStackTrace(printStream);
         }
     }
 
     @Override
     public void info(CharSequence content) {
         if (isInfoEnabled()) {
-            s.println(content);
+            printStream.println(content);
         }
     }
 
@@ -88,7 +88,7 @@ class StreamLog implements Log {
     @Override
     public void info(Throwable error) {
         if (isInfoEnabled()) {
-            error.printStackTrace(s);
+            error.printStackTrace(printStream);
         }
     }
 
@@ -115,7 +115,7 @@ class StreamLog implements Log {
     @Override
     public void warn(CharSequence content) {
         if (isWarnEnabled()) {
-            s.println(content);
+            printStream.println(content);
         }
     }
 
@@ -128,7 +128,7 @@ class StreamLog implements Log {
     @Override
     public void warn(Throwable error) {
         if (isWarnEnabled()) {
-            error.printStackTrace(s);
+            error.printStackTrace(printStream);
         }
     }
 }

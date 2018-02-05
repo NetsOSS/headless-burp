@@ -3,7 +3,6 @@ package eu.nets.burp.maven;
 import com.google.common.collect.Lists;
 import java.io.File;
 import java.util.List;
-import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.codehaus.plexus.util.StringUtils;
@@ -39,7 +38,7 @@ public class StartBurpScannerMojo extends AbstractBurpMojo {
     }
 
     @Override
-    protected List<String> createBurpCommandLine() throws MojoExecutionException {
+    protected List<String> createBurpCommandLine() {
         List<String> command = Lists.newArrayList();
         if (burpConfig != null) {
             command.add("-c");
@@ -60,7 +59,7 @@ public class StartBurpScannerMojo extends AbstractBurpMojo {
     }
 
     @Override
-    protected void execute(ProcessBuilder processBuilder) throws MojoExecutionException {
+    protected void execute(ProcessBuilder processBuilder) {
         getLog().info("Starting headless burp scanner...");
         getLog().info(StringUtils.join(processBuilder.command().iterator(), " "));
 

@@ -3,7 +3,6 @@ package eu.nets.burp.maven;
 import com.google.common.collect.Lists;
 import java.io.File;
 import java.util.List;
-import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
@@ -44,7 +43,7 @@ public class StartBurpProxyMojo extends AbstractBurpMojo {
     }
 
     @Override
-    protected List<String> createBurpCommandLine() throws MojoExecutionException {
+    protected List<String> createBurpCommandLine() {
         List<String> command = Lists.newArrayList();
         command.add("--proxy-port");
         command.add(String.valueOf(proxyPort));

@@ -14,8 +14,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class ShutdownListener {
 
     private String host = "localhost";
-    private int port = 4444;
-    private String shutdownKey = "SHUTDOWN";
+    private int port;
+    private String shutdownKey;
     private ShutdownCallback shutdownCallback;
     private final AtomicBoolean shutdownRequested = new AtomicBoolean(false);
     private final AtomicBoolean shutdownComplete = new AtomicBoolean(false);
@@ -26,9 +26,9 @@ public class ShutdownListener {
         this.shutdownCallback = shutdownCallback;
     }
 
-    public final void start() throws Exception {
+    public final void start() {
         //Register a shutdown handler
-        Thread shutdownHook = new Thread(this::shutdown, "JVM Shutdown Hook");
+        Thread shutdownHook = new Thread(this::shutdown, "headless-burp-proxy Shutdown Hook");
         Runtime.getRuntime().addShutdownHook(shutdownHook);
 
         ShutdownSocketListener shutdownSocketListener = new ShutdownSocketListener(host, port);
@@ -36,7 +36,7 @@ public class ShutdownListener {
     }
 
     /**
-     * Calls shutdown hook and cleans up shutdown listener code, notifies all waiting threads on completion
+     * Calls shutdown hook and cleans up shutdown listener code, notifies all waiting threads on completion.
      */
     private void shutdown() {
         final boolean shuttingDown = this.shutdownRequested.getAndSet(true);
@@ -49,7 +49,7 @@ public class ShutdownListener {
     }
 
     /**
-     * Runnable for waiting on connections to the shutdown socket and handling them
+     * Runnable for waiting on connections to the shutdown socket and handling them.
      */
     private class ShutdownSocketListener {
         private final ServerSocket shutdownSocket;
@@ -105,7 +105,7 @@ public class ShutdownListener {
     public interface ShutdownCallback {
 
         /**
-         * Called when the application is shutting down, should block until the class is completely shut down
+         * Called when the application is shutting down, should block until the class is completely shut down.
          */
         void shutdown();
     }
