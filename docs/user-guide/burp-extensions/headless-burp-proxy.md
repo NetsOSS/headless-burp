@@ -13,13 +13,13 @@ Provides an extension to Burp that allows you to run, stop and capture results f
 On *nix:
 
     java -Xmx1G -Djava.awt.headless=true \
-    -classpath headless-burp-proxy.jar:burpsuite_pro_v1.7.31.jar burp.StartBurp \
+    -classpath headless-burp-proxy-master-SNAPSHOT-jar-with-dependencies.jar:burpsuite_pro_v1.7.31.jar burp.StartBurp \
     --project-file=project.burp
 
 On Cygwin:
  
     java -Xmx1G -Djava.awt.headless=true \
-    -classpath "headless-burp-proxy.jar;burpsuite_pro_v1.7.31.jar" burp.StartBurp 
+    -classpath "headless-burp-proxy-master-SNAPSHOT-jar-with-dependencies.jar;burpsuite_pro_v1.7.31.jar" burp.StartBurp \
     --project-file=project.burp
 
 #### Commandline Options

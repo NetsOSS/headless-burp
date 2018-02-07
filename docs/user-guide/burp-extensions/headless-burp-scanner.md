@@ -34,13 +34,13 @@ For an example configuration file, see [config.xml]
 On *nix:
 
     java -Xmx1G -Djava.awt.headless=true \
-    -classpath headless-burp-scanner.jar:burpsuite_pro_v1.7.31.jar burp.StartBurp \
+    -classpath headless-burp-scanner-master-SNAPSHOT-jar-with-dependencies.jar:burpsuite_pro_v1.7.31.jar burp.StartBurp \
     --project-file=project.burp -c config.xml
 
 On Cygwin:
  
     java -Xmx1G -Djava.awt.headless=true \
-    -classpath "headless-burp-scanner.jar;burpsuite_pro_v1.7.31.jar" burp.StartBurp \
+    -classpath "headless-burp-scanner-master-SNAPSHOT-jar-with-dependencies.jar;burpsuite_pro_v1.7.31.jar" burp.StartBurp \
     --project-file=project.burp -c config.xml
 
 ### Commandline Options
