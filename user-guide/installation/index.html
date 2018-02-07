@@ -13,7 +13,7 @@
         <meta name="description" content="Provides a suite of Burp extensions and a maven plugin to automate security tests using BurpSuite.">
       
       
-        <link rel="canonical" href="https://NetsOSS.github.io/headless-burp/user-guide/maven-plugin/">
+        <link rel="canonical" href="https://NetsOSS.github.io/headless-burp/user-guide/installation/">
       
       
         <meta name="author" content="Anand Sudhir Prayaga">
@@ -38,7 +38,7 @@
     
     
       
-        <title>Maven Plugin - Headless Burp</title>
+        <title>Installation - Headless Burp</title>
       
     
     
@@ -94,7 +94,7 @@
                 Headless Burp
               </span>
               <span class="md-header-nav__topic">
-                Maven Plugin
+                Installation
               </span>
             
           
@@ -334,43 +334,9 @@
       
     
     
-      <label class="md-nav__link md-nav__link--active" for="toc">
-        Maven Plugin
-      </label>
-    
-    <a href="./" title="Maven Plugin" class="md-nav__link md-nav__link--active">
-      Maven Plugin
+    <a href="./" title="Installation" class="md-nav__link md-nav__link--active">
+      Installation
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#scanner" title="Scanner" class="md-nav__link">
-    Scanner
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#proxy" title="Proxy" class="md-nav__link">
-    Proxy
-  </a>
-  
-</li>
-      
-      
-      
-    </ul>
-  
-</nav>
     
   </li>
 
@@ -385,10 +351,46 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-2" type="checkbox" id="nav-4-2">
     
     <label class="md-nav__link" for="nav-4-2">
-      Burp Extensions
+      Maven Plugin
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
       <label class="md-nav__title" for="nav-4-2">
+        Maven Plugin
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../maven-plugin/usage/" title="Usage" class="md-nav__link">
+      Usage
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3">
+    
+    <label class="md-nav__link" for="nav-4-3">
+      Burp Extensions
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-3">
         Burp Extensions
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -469,27 +471,6 @@
     
   
   
-    <label class="md-nav__title" for="toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#scanner" title="Scanner" class="md-nav__link">
-    Scanner
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#proxy" title="Proxy" class="md-nav__link">
-    Proxy
-  </a>
-  
-</li>
-      
-      
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -500,76 +481,25 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/NetsOSS/headless-burp/edit/master/docs/user-guide/maven-plugin.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/NetsOSS/headless-burp/edit/master/docs/user-guide/installation.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <h1 id="maven-plugin">Maven Plugin<a class="headerlink" href="#maven-plugin" title="Permanent link">&para;</a></h1>
-<p>Maven plugin that allows you to run the Burp Proxy and Scanner tools in headless mode.</p>
-<h2 id="scanner">Scanner<a class="headerlink" href="#scanner" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span>...
-<span class="nt">&lt;build&gt;</span>
-    <span class="nt">&lt;plugins&gt;</span>
-        <span class="nt">&lt;plugin&gt;</span>
-            <span class="nt">&lt;groupId&gt;</span>eu.nets.burp<span class="nt">&lt;/groupId&gt;</span>
-            <span class="nt">&lt;artifactId&gt;</span>burp-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
-            <span class="nt">&lt;version&gt;</span>master-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
-            <span class="nt">&lt;configuration&gt;</span>
-                <span class="nt">&lt;burpSuite&gt;</span>burp/burpsuite_pro_v1.6.26.jar<span class="nt">&lt;/burpSuite&gt;</span>
-                <span class="nt">&lt;burpConfig&gt;</span>burp/config.xml<span class="nt">&lt;/burpConfig&gt;</span>
-                <span class="nt">&lt;headless&gt;</span>true<span class="nt">&lt;/headless&gt;</span>
-                <span class="nt">&lt;burpState&gt;</span>target/headless-burp-proxy.state<span class="nt">&lt;/burpState&gt;</span>
-                <span class="nt">&lt;promptOnExit&gt;</span>false<span class="nt">&lt;/promptOnExit&gt;</span>
-                <span class="nt">&lt;verbose&gt;</span>true<span class="nt">&lt;/verbose&gt;</span>
-                <span class="nt">&lt;skip&gt;</span>false<span class="nt">&lt;/skip&gt;</span>
-            <span class="nt">&lt;/configuration&gt;</span>
-        <span class="nt">&lt;/plugin&gt;</span>
-    <span class="nt">&lt;/plugins&gt;</span>
-<span class="nt">&lt;/build&gt;</span>
-...
+                <h1 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h1>
+<p>Before installing <a href="https://portswigger.net/burp/">Burp Suite</a> with headless-burp extensions, make sure you have Java 8 installed, you can verify if you're already good to go with the following commands: </p>
+<div class="codehilite"><pre><span></span>java -version
 </pre></div>
 
-<p>TODO</p>
-<h2 id="proxy">Proxy<a class="headerlink" href="#proxy" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span>...
-<span class="nt">&lt;build&gt;</span>
-    <span class="nt">&lt;plugins&gt;</span>
-        <span class="nt">&lt;plugin&gt;</span>
-            <span class="nt">&lt;groupId&gt;</span>eu.nets.burp<span class="nt">&lt;/groupId&gt;</span>
-            <span class="nt">&lt;artifactId&gt;</span>burp-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
-            <span class="nt">&lt;version&gt;</span>master-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
-            <span class="nt">&lt;configuration&gt;</span>
-                <span class="nt">&lt;burpSuite&gt;</span>burp/burpsuite_pro_v1.6.26.jar<span class="nt">&lt;/burpSuite&gt;</span>
-                <span class="nt">&lt;burpConfig&gt;</span>burp/config.xml<span class="nt">&lt;/burpConfig&gt;</span>
-                <span class="nt">&lt;headless&gt;</span>true<span class="nt">&lt;/headless&gt;</span>
-                <span class="nt">&lt;burpState&gt;</span>target/headless-burp-proxy.state<span class="nt">&lt;/burpState&gt;</span>
-                <span class="nt">&lt;promptOnExit&gt;</span>false<span class="nt">&lt;/promptOnExit&gt;</span>
-                <span class="nt">&lt;verbose&gt;</span>true<span class="nt">&lt;/verbose&gt;</span>
-                <span class="nt">&lt;skip&gt;</span>false<span class="nt">&lt;/skip&gt;</span>
-            <span class="nt">&lt;/configuration&gt;</span>
-            <span class="nt">&lt;executions&gt;</span>
-                <span class="nt">&lt;execution&gt;</span>
-                    <span class="nt">&lt;id&gt;</span>start-burp-proxy<span class="nt">&lt;/id&gt;</span>
-                    <span class="nt">&lt;phase&gt;</span>pre-integration-test<span class="nt">&lt;/phase&gt;</span>
-                    <span class="nt">&lt;goals&gt;</span>
-                        <span class="nt">&lt;goal&gt;</span>start-proxy<span class="nt">&lt;/goal&gt;</span>
-                    <span class="nt">&lt;/goals&gt;</span>
-                    <span class="nt">&lt;configuration&gt;</span>
-                        <span class="nt">&lt;burpState&gt;</span>burp/initial-burp-state<span class="nt">&lt;/burpState&gt;</span>
-                    <span class="nt">&lt;/configuration&gt;</span>
-                <span class="nt">&lt;/execution&gt;</span>
-                <span class="nt">&lt;execution&gt;</span>
-                    <span class="nt">&lt;id&gt;</span>stop-burp-proxy<span class="nt">&lt;/id&gt;</span>
-                    <span class="nt">&lt;phase&gt;</span>post-integration-test<span class="nt">&lt;/phase&gt;</span>
-                    <span class="nt">&lt;goals&gt;</span>
-                        <span class="nt">&lt;goal&gt;</span>stop-proxy<span class="nt">&lt;/goal&gt;</span>
-                    <span class="nt">&lt;/goals&gt;</span>
-                <span class="nt">&lt;/execution&gt;</span>
-            <span class="nt">&lt;/executions&gt;</span>
-        <span class="nt">&lt;/plugin&gt;</span>
-    <span class="nt">&lt;/plugins&gt;</span>
-<span class="nt">&lt;/build&gt;</span>
-...
+<div class="admonition warning">
+<p class="admonition-title">headless-burp version requirements</p>
+<p>headless-burp requires java &gt;= 1.8</p>
+</div>
+<h1 id="installing-burp">Installing Burp<a class="headerlink" href="#installing-burp" title="Permanent link">&para;</a></h1>
+<p>Download Burp Suite from <a href="https://portswigger.net/burp/download.html" title="download">here</a> and follow instructions from <a href="https://portswigger.net/burp/help/suite_gettingstarted.html">getting started with Burp Suite</a></p>
+<h2 id="installing-burp-on-a-headless-machine">Installing Burp on a headless machine<a class="headerlink" href="#installing-burp-on-a-headless-machine" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span>java -jar -Xmx1024m /path/to/burp.jar
 </pre></div>
+
+<p>Follow the instructions on the prompt. To install the license manually on a headless environment, refer the "Manual Activation" section from <a href="https://support.portswigger.net/customer/en/portal/articles/2327558-Installing_License.html">activating your burp license key</a></p>
                 
                   
                 
@@ -603,13 +533,13 @@
           </a>
         
         
-          <a href="../burp-extensions/headless-burp-proxy/" title="Headless Burp Proxy" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../maven-plugin/usage/" title="Usage" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Headless Burp Proxy
+                Usage
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

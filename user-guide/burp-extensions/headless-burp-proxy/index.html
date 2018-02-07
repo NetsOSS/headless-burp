@@ -326,9 +326,45 @@
 
 
   <li class="md-nav__item">
-    <a href="../../maven-plugin/" title="Maven Plugin" class="md-nav__link">
-      Maven Plugin
+    <a href="../../installation/" title="Installation" class="md-nav__link">
+      Installation
     </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-2" type="checkbox" id="nav-4-2">
+    
+    <label class="md-nav__link" for="nav-4-2">
+      Maven Plugin
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-2">
+        Maven Plugin
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../maven-plugin/usage/" title="Usage" class="md-nav__link">
+      Usage
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
         
@@ -341,13 +377,13 @@
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-2" type="checkbox" id="nav-4-2" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3" checked>
     
-    <label class="md-nav__link" for="nav-4-2">
+    <label class="md-nav__link" for="nav-4-3">
       Burp Extensions
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-4-2">
+      <label class="md-nav__title" for="nav-4-3">
         Burp Extensions
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -364,6 +400,8 @@
     
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
     
+      
+    
     
       <label class="md-nav__link md-nav__link--active" for="toc">
         Headless Burp Proxy
@@ -377,26 +415,20 @@
 <nav class="md-nav md-nav--secondary">
   
   
+    
+  
   
     <label class="md-nav__title" for="toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#headless-burp-proxy" title="Headless Burp Proxy" class="md-nav__link">
-    Headless Burp Proxy
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#features" title="Features" class="md-nav__link">
     Features
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#start-burp-proxy" title="Start Burp Proxy" class="md-nav__link">
     Start Burp Proxy
   </a>
@@ -415,16 +447,11 @@
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#stop-burp-proxy" title="Stop Burp Proxy" class="md-nav__link">
     Stop Burp Proxy
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -497,26 +524,20 @@
 <nav class="md-nav md-nav--secondary">
   
   
+    
+  
   
     <label class="md-nav__title" for="toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#headless-burp-proxy" title="Headless Burp Proxy" class="md-nav__link">
-    Headless Burp Proxy
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#features" title="Features" class="md-nav__link">
     Features
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#start-burp-proxy" title="Start Burp Proxy" class="md-nav__link">
     Start Burp Proxy
   </a>
@@ -535,16 +556,11 @@
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#stop-burp-proxy" title="Stop Burp Proxy" class="md-nav__link">
     Stop Burp Proxy
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -565,40 +581,54 @@
                   <a href="https://github.com/NetsOSS/headless-burp/edit/master/docs/user-guide/burp-extensions/headless-burp-proxy.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                  <h1>Headless Burp Proxy</h1>
-                
-                <h2 id="headless-burp-proxy">Headless Burp Proxy<a class="headerlink" href="#headless-burp-proxy" title="Permanent link">&para;</a></h2>
-<p>Provides an extension to Burp that allows you to run, stop and capture results from the Burp Proxy tool in headless mode.</p>
+                <h1 id="headless-burp-proxy">Headless Burp Proxy<a class="headerlink" href="#headless-burp-proxy" title="Permanent link">&para;</a></h1>
+<p>Provides an extension to Burp that allows you to run, stop and capture results from the Burp proxy tool in headless mode.</p>
 <h3 id="features">Features<a class="headerlink" href="#features" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Starts the burp proxy on a provided port (default <code>4646</code>)</li>
 <li>Register a shutdown listener and wait for a shutdown request (default <code>&quot;SHUTDOWN&quot;</code>) on port (default <code>4444</code>).</li>
-<li>On receiving a shutdown request, saves the burp state to a file (headless-burp-proxy.state) and shutsdown Burp</li>
+<li>On receiving a shutdown request, saves the burp project file along with all the information regarding the proxied requests and responses, and finally shuts down Burp</li>
 </ul>
 <h3 id="start-burp-proxy">Start Burp Proxy<a class="headerlink" href="#start-burp-proxy" title="Permanent link">&para;</a></h3>
 <p>On *nix:</p>
-<div class="codehilite"><pre><span></span>/usr/java/latest8/bin/java -Xmx1G -Djava.awt.headless=true -classpath headless-burp-scanner-master-SNAPSHOT-jar-with-dependencies.jar:burpsuite_pro_v1.6.26.jar burp.StartBurp
+<div class="codehilite"><pre><span></span>java -Xmx1G -Djava.awt.headless=true \
+-classpath headless-burp-proxy.jar:burpsuite_pro_v1.7.31.jar burp.StartBurp \
+--project-file=project.burp
 </pre></div>
 
 
 <p>On Cygwin:</p>
-<div class="codehilite"><pre><span></span>java -Xmx1G -Djava.awt.headless=true -classpath &quot;headless-burp-scanner-master-SNAPSHOT-jar-with-dependencies.jar;burpsuite_pro_v1.6.26.jar&quot; burp.StartBurp
+<div class="codehilite"><pre><span></span>java -Xmx1G -Djava.awt.headless=true \
+-classpath &quot;headless-burp-proxy.jar;burpsuite_pro_v1.7.31.jar&quot; burp.StartBurp 
+--project-file=project.burp
 </pre></div>
 
 
 <h4 id="commandline-options">Commandline Options<a class="headerlink" href="#commandline-options" title="Permanent link">&para;</a></h4>
-<div class="codehilite"><pre><span></span>-p (--prompt)        : Indicates whether to prompt the user to confirm the
-                       shutdown (useful for debugging)
--s (--state) &lt;file&gt;  : Burp state file
--v (--verbose)       : Enable verbose output
---proxyPort VAL      : Proxy port
---shutdownPort VAL   : Shutdown port
---shutdownKey VAL    : Shutdown key
+<div class="codehilite"><pre><span></span>--project-file=VAL          Open the specified project file; this will be created as a new project if the file does not exist (mandatory)
+--proxyPort VAL             Proxy port
+--shutdownPort VAL          Shutdown port
+--shutdownKey VAL           Shutdown key
+-p (--prompt)               Indicates whether to prompt the user to confirm the shutdown (useful for debugging)
+-v (--verbose)              Enable verbose output
+
+--diagnostics               Print diagnostic information
+--use-defaults              Start with default settings
+--collaborator-server       Run in Collaborator server mode
+--collaborator-config=VAL   Specify Collaborator server configuration file; defaults to collaborator.config
+--config-file=VAL           Load the specified project configuration file(s); this option may be repeated to load multiple files
+--user-config-file=VAL      Load the specified user configuration file(s); this option may be repeated to load multiple files
+--auto-repair               Automatically repair a corrupted project file specified by the --project-file option
 </pre></div>
 
 
 <h3 id="stop-burp-proxy">Stop Burp Proxy<a class="headerlink" href="#stop-burp-proxy" title="Permanent link">&para;</a></h3>
-<p>TODO: provide an example using <code>curl</code></p>
+<div class="codehilite"><pre><span></span>echo SHUTDOWN &gt;&gt; /dev/tcp/127.0.0.1/4444
+or
+echo SHUTDOWN | netcat 127.0.0.1 4444
+or
+echo SHUTDOWN | ncat 127.0.0.1 4444
+</pre></div>
                 
                   
                 
@@ -617,7 +647,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../../maven-plugin/" title="Maven Plugin" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../../maven-plugin/usage/" title="Usage" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -626,7 +656,7 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Maven Plugin
+                Usage
               </span>
             </div>
           </a>

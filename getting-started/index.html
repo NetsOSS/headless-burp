@@ -229,50 +229,9 @@
       
     
     
-      <label class="md-nav__link md-nav__link--active" for="toc">
-        Getting Started
-      </label>
-    
     <a href="./" title="Getting Started" class="md-nav__link md-nav__link--active">
       Getting Started
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#installing-burp-on-windows" title="Installing Burp on windows" class="md-nav__link">
-    Installing Burp on windows
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#installing-burp-on-a-headless-machine" title="Installing Burp on a headless machine" class="md-nav__link">
-    Installing Burp on a headless machine
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#building-documentation" title="Building Documentation" class="md-nav__link">
-    Building Documentation
-  </a>
-  
-</li>
-      
-      
-      
-    </ul>
-  
-</nav>
     
   </li>
 
@@ -374,8 +333,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../user-guide/maven-plugin/" title="Maven Plugin" class="md-nav__link">
-      Maven Plugin
+    <a href="../user-guide/installation/" title="Installation" class="md-nav__link">
+      Installation
     </a>
   </li>
 
@@ -390,10 +349,46 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-2" type="checkbox" id="nav-4-2">
     
     <label class="md-nav__link" for="nav-4-2">
-      Burp Extensions
+      Maven Plugin
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
       <label class="md-nav__title" for="nav-4-2">
+        Maven Plugin
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/maven-plugin/usage/" title="Usage" class="md-nav__link">
+      Usage
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3">
+    
+    <label class="md-nav__link" for="nav-4-3">
+      Burp Extensions
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-3">
         Burp Extensions
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -474,34 +469,6 @@
     
   
   
-    <label class="md-nav__title" for="toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#installing-burp-on-windows" title="Installing Burp on windows" class="md-nav__link">
-    Installing Burp on windows
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#installing-burp-on-a-headless-machine" title="Installing Burp on a headless machine" class="md-nav__link">
-    Installing Burp on a headless machine
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#building-documentation" title="Building Documentation" class="md-nav__link">
-    Building Documentation
-  </a>
-  
-</li>
-      
-      
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -515,33 +482,10 @@
                   <a href="https://github.com/NetsOSS/headless-burp/edit/master/docs/getting-started.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <h1 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h1>
-<h2 id="installing-burp-on-windows">Installing Burp on windows<a class="headerlink" href="#installing-burp-on-windows" title="Permanent link">&para;</a></h2>
-<p>Before installing <a href="https://portswigger.net/burp/">Burp Suite</a>, make sure you have Java 8 up and running, You can verify if you're already good to go with the following commands: </p>
-<div class="codehilite"><pre><span></span>java -version
-</pre></div>
-
-<div class="admonition warning">
-<p class="admonition-title">headless-burp version requirements</p>
-<p>headless-burp requires java &gt;= 1.8</p>
-</div>
-<p>Download Burp Suite from <a href="https://portswigger.net/burp/download.html" title="download">here</a>.</p>
-<p>Follow instructions on <a href="https://portswigger.net/burp/help/suite_gettingstarted.html">https://portswigger.net/burp/help/suite_gettingstarted.html</a></p>
-<h2 id="installing-burp-on-a-headless-machine">Installing Burp on a headless machine<a class="headerlink" href="#installing-burp-on-a-headless-machine" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span>java -jar -Xmx1024m /path/to/burp.jar
-</pre></div>
-
-<p>TODO: Add installation steps and screenshots</p>
-<h2 id="building-documentation">Building Documentation<a class="headerlink" href="#building-documentation" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span>pip install mkdocs
-pip install mkdocs-material
-pip install pymdown-extensions
-
-mkdocs serve
-mkdocs build --clean
-
-mkdocs gh-deploy --clean
-</pre></div>
+                <h1 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h1>
+<p>For instructions on how to install burp suite, see the <a href="../user-guide/installation/">installation guide</a>.</p>
+<p>For detailed instructions on using the burp suite extensions, see <a href="../user-guide/burp-extensions/headless-burp-proxy/">Headless Burp Proxy</a> and <a href="../user-guide/burp-extensions/headless-burp-scanner/">Headless Burp Scanner</a>.</p>
+<p>For detailed instructions on using the headless burp maven plugin, see <a href="../user-guide/maven-plugin/usage/">Burp Maven Plugin</a>.</p>
                 
                   
                 

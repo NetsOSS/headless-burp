@@ -1,0 +1,11 @@
+## Building Documentation
+```
+pip install mkdocs
+pip install mkdocs-material
+pip install pymdown-extensions
+
+mkdocs serve
+mkdocs build --clean
+
+mkdocs gh-deploy --clean
+```

@@ -13,7 +13,7 @@
         <meta name="description" content="Provides a suite of Burp extensions and a maven plugin to automate security tests using BurpSuite.">
       
       
-        <link rel="canonical" href="https://NetsOSS.github.io/headless-burp/user-guide/burp-extensions/headless-burp-scanner/">
+        <link rel="canonical" href="https://NetsOSS.github.io/headless-burp/user-guide/maven-plugin/usage/">
       
       
         <meta name="author" content="Anand Sudhir Prayaga">
@@ -38,7 +38,7 @@
     
     
       
-        <title>Headless Burp Scanner - Headless Burp</title>
+        <title>Usage - Headless Burp</title>
       
     
     
@@ -94,7 +94,7 @@
                 Headless Burp
               </span>
               <span class="md-header-nav__topic">
-                Headless Burp Scanner
+                Usage
               </span>
             
           
@@ -336,10 +336,12 @@
           
           
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-2" type="checkbox" id="nav-4-2">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-2" type="checkbox" id="nav-4-2" checked>
     
     <label class="md-nav__link" for="nav-4-2">
       Maven Plugin
@@ -355,11 +357,47 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../maven-plugin/usage/" title="Usage" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        Usage
+      </label>
+    
+    <a href="./" title="Usage" class="md-nav__link md-nav__link--active">
       Usage
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#full-example" title="Full example" class="md-nav__link">
+    Full example
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -372,12 +410,10 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3">
     
     <label class="md-nav__link" for="nav-4-3">
       Burp Extensions
@@ -395,7 +431,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../headless-burp-proxy/" title="Headless Burp Proxy" class="md-nav__link">
+    <a href="../../burp-extensions/headless-burp-proxy/" title="Headless Burp Proxy" class="md-nav__link">
       Headless Burp Proxy
     </a>
   </li>
@@ -405,61 +441,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="toc">
-        Headless Burp Scanner
-      </label>
-    
-    <a href="./" title="Headless Burp Scanner" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../burp-extensions/headless-burp-scanner/" title="Headless Burp Scanner" class="md-nav__link">
       Headless Burp Scanner
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#configuration" title="Configuration" class="md-nav__link">
-    Configuration
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#run-burp-scan" title="Run Burp Scan" class="md-nav__link">
-    Run Burp Scan
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#commandline-options" title="Commandline Options" class="md-nav__link">
-    Commandline Options
-  </a>
-  
-</li>
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -518,22 +504,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#configuration" title="Configuration" class="md-nav__link">
-    Configuration
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#run-burp-scan" title="Run Burp Scan" class="md-nav__link">
-    Run Burp Scan
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#commandline-options" title="Commandline Options" class="md-nav__link">
-    Commandline Options
+  <a href="#full-example" title="Full example" class="md-nav__link">
+    Full example
   </a>
   
 </li>
@@ -552,65 +524,58 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/NetsOSS/headless-burp/edit/master/docs/user-guide/burp-extensions/headless-burp-scanner.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/NetsOSS/headless-burp/edit/master/docs/user-guide/maven-plugin/usage.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <h1 id="headless-burp-scanner">Headless Burp Scanner<a class="headerlink" href="#headless-burp-scanner" title="Permanent link">&para;</a></h1>
-<p>Provides an extension to Burp that allows you to run the Burp scanner tool in headless mode.</p>
-<h3 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;config xmlns=&quot;http://nets.eu/burp/config&quot;&gt;
-    &lt;reportType&gt;JUNIT&lt;/reportType&gt;
-    &lt;targetSitemap&gt;&lt;![CDATA[http://localhost:5432]]&gt;&lt;/targetSitemap&gt;
-    &lt;scope&gt;
-        &lt;url&gt;&lt;![CDATA[http://localhost:5432/]]&gt;&lt;/url&gt;
-        &lt;exclusions&gt;
-            &lt;exclusion&gt;&lt;![CDATA[localhost:5432/#/logout]]&gt;&lt;/exclusion&gt;
-        &lt;/exclusions&gt;
-    &lt;/scope&gt;
-    &lt;false-positives&gt;
-        &lt;issue&gt;
-            &lt;type&gt;5244416&lt;/type&gt;
-            &lt;path&gt;.*&lt;/path&gt;
-        &lt;/issue&gt;
-        &lt;issue&gt;
-            &lt;type&gt;5247488&lt;/type&gt;
-            &lt;path&gt;.*bower_components.*&lt;/path&gt;
-        &lt;/issue&gt;
-    &lt;/false-positives&gt;
-&lt;/config&gt;
-</pre></div>
-
-
-<p>For an example configuration file, see <a href="https://github.com/NetsOSS/headless-burp/blob/master/headless-burp-scanner/src/test/resources/config.xml">config.xml</a></p>
-<h3 id="run-burp-scan">Run Burp Scan<a class="headerlink" href="#run-burp-scan" title="Permanent link">&para;</a></h3>
-<p>On *nix:</p>
-<div class="codehilite"><pre><span></span>java -Xmx1G -Djava.awt.headless=true \
--classpath headless-burp-scanner.jar:burpsuite_pro_v1.7.31.jar burp.StartBurp \
---project-file=project.burp -c config.xml
-</pre></div>
-
-
-<p>On Cygwin:</p>
-<div class="codehilite"><pre><span></span>java -Xmx1G -Djava.awt.headless=true \
--classpath &quot;headless-burp-scanner.jar;burpsuite_pro_v1.7.31.jar&quot; burp.StartBurp \
---project-file=project.burp -c config.xml
-</pre></div>
-
-
-<h3 id="commandline-options">Commandline Options<a class="headerlink" href="#commandline-options" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span>--project-file=VAL          Open the specified project file; this will be created as a new project if the file does not exist (mandatory)
--c (--config) &lt;file&gt;        Configuration file (mandatory)
--p (--prompt)               Indicates whether to prompt the user to confirm the shutdown (useful for debugging)
--v (--verbose)              Enable verbose output
-
---diagnostics               Print diagnostic information
---use-defaults              Start with default settings
---collaborator-server       Run in Collaborator server mode
---collaborator-config=VAL   Specify Collaborator server configuration file; defaults to collaborator.config
---config-file=VAL           Load the specified project configuration file(s); this option may be repeated to load multiple files
---user-config-file=VAL      Load the specified user configuration file(s); this option may be repeated to load multiple files
---auto-repair               Automatically repair a corrupted project file specified by the --project-file option
+                <h1 id="burp-maven-plugin">Burp Maven Plugin<a class="headerlink" href="#burp-maven-plugin" title="Permanent link">&para;</a></h1>
+<p>Maven plugin that allows you to run Burp Suite's Proxy and Scanner tools in headless mode.</p>
+<p>The plugin is essentially a wrapper around the <a href="../../burp-extensions/headless-burp-proxy/">Headless Burp Proxy</a> and <a href="../../burp-extensions/headless-burp-scanner/">Headless Burp Scanner</a> extensions. It offers easy way to integrate security testing using <a href="https://portswigger.net/burp">Burp Suite</a> into the project build lifecycle.</p>
+<h2 id="full-example">Full example<a class="headerlink" href="#full-example" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><span class="nt">&lt;build&gt;</span>
+    ...
+    <span class="nt">&lt;plugins&gt;</span>
+        ...
+        <span class="nt">&lt;plugin&gt;</span>
+            <span class="nt">&lt;groupId&gt;</span>eu.nets.burp<span class="nt">&lt;/groupId&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>burp-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
+            <span class="nt">&lt;version&gt;</span>master-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
+            <span class="nt">&lt;configuration&gt;</span>
+                <span class="nt">&lt;burpSuite&gt;</span>burp/burpsuite_pro_v1.7.31.jar<span class="nt">&lt;/burpSuite&gt;</span>
+                <span class="nt">&lt;burpProjectFile&gt;</span>target/headless-burp-project.burp<span class="nt">&lt;/burpProjectFile&gt;</span>
+                <span class="nt">&lt;burpConfig&gt;</span>burp/config.xml<span class="nt">&lt;/burpConfig&gt;</span>
+                <span class="nt">&lt;headless&gt;</span>true<span class="nt">&lt;/headless&gt;</span>
+                <span class="nt">&lt;promptOnExit&gt;</span>false<span class="nt">&lt;/promptOnExit&gt;</span>
+                <span class="nt">&lt;verbose&gt;</span>true<span class="nt">&lt;/verbose&gt;</span>
+                <span class="nt">&lt;skip&gt;</span>false<span class="nt">&lt;/skip&gt;</span>
+            <span class="nt">&lt;/configuration&gt;</span>
+            <span class="nt">&lt;executions&gt;</span>
+                <span class="nt">&lt;execution&gt;</span>
+                    <span class="nt">&lt;id&gt;</span>start-burp-proxy<span class="nt">&lt;/id&gt;</span>
+                    <span class="nt">&lt;phase&gt;</span>pre-integration-test<span class="nt">&lt;/phase&gt;</span>
+                    <span class="nt">&lt;goals&gt;</span>
+                        <span class="nt">&lt;goal&gt;</span>start-proxy<span class="nt">&lt;/goal&gt;</span>
+                    <span class="nt">&lt;/goals&gt;</span>
+                <span class="nt">&lt;/execution&gt;</span>
+                <span class="nt">&lt;execution&gt;</span>
+                    <span class="nt">&lt;id&gt;</span>stop-burp-proxy<span class="nt">&lt;/id&gt;</span>
+                    <span class="nt">&lt;phase&gt;</span>post-integration-test<span class="nt">&lt;/phase&gt;</span>
+                    <span class="nt">&lt;goals&gt;</span>
+                        <span class="nt">&lt;goal&gt;</span>stop-proxy<span class="nt">&lt;/goal&gt;</span>
+                    <span class="nt">&lt;/goals&gt;</span>
+                <span class="nt">&lt;/execution&gt;</span>
+                <span class="nt">&lt;execution&gt;</span>
+                    <span class="nt">&lt;id&gt;</span>start-burp-scan<span class="nt">&lt;/id&gt;</span>
+                    <span class="nt">&lt;phase&gt;</span>verify<span class="nt">&lt;/phase&gt;</span>
+                    <span class="nt">&lt;goals&gt;</span>
+                        <span class="nt">&lt;goal&gt;</span>start-scan<span class="nt">&lt;/goal&gt;</span>
+                    <span class="nt">&lt;/goals&gt;</span>
+                <span class="nt">&lt;/execution&gt;</span>
+            <span class="nt">&lt;/executions&gt;</span>
+        <span class="nt">&lt;/plugin&gt;</span>
+        ...
+    <span class="nt">&lt;/plugins&gt;</span>
+    ...
+<span class="nt">&lt;/build&gt;</span>
 </pre></div>
                 
                   
@@ -630,7 +595,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../headless-burp-proxy/" title="Headless Burp Proxy" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../../installation/" title="Installation" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -639,19 +604,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Headless Burp Proxy
+                Installation
               </span>
             </div>
           </a>
         
         
-          <a href="../../../known-issues/" title="Known Issues & Limitations" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../burp-extensions/headless-burp-proxy/" title="Headless Burp Proxy" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Known Issues & Limitations
+                Headless Burp Proxy
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
