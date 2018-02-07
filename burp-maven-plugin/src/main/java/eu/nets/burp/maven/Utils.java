@@ -3,6 +3,7 @@ package eu.nets.burp.maven;
 import com.google.common.collect.Lists;
 import java.io.File;
 import java.util.List;
+import java.util.Locale;
 import org.codehaus.plexus.util.StringUtils;
 
 public class Utils {
@@ -23,7 +24,7 @@ public class Utils {
     }
 
     public static boolean isWindows() {
-        return System.getProperty("os.name").toLowerCase().contains("windows");
+        return System.getProperty("os.name").toLowerCase(Locale.ENGLISH).contains("windows");
     }
 
     public static class ClassPathBuilder {

@@ -12,9 +12,9 @@ However, we wanted more!
 
 We wanted JUnit like output in Jenkins and a failed build whenever any vulnerabilities were found. And we also wanted the possibility to flag false positives. That is after a potential security hole has been found and reported, you investigate it in your code and find that no way this can happen, you want to configure this so that it will not be reported on the next run. 
 
-And just performing a scan on a target doesn’t really give that much in our javascript web application world today by reasons I’ll get back to later. So we also had to be able to automatically proxy the application to build that sitemap. 
+And just performing a scan on a target doesnt really give that much in our javascript web application world today by reasons I’ll get back to later. So we also had to be able to automatically proxy the application to build that sitemap. 
 
-So we first decided to port [Carbonator] to Java (as we did’t know python very well), and built our own extension.
+So we first decided to port [Carbonator] to Java (as we didnt know python very well), and built our own extension.
 
 [Carbonator]: https://github.com/integrissecurity/carbonator
 [BApp Store]: https://portswigger.net/bappstore

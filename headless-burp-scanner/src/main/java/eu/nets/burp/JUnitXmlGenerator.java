@@ -6,8 +6,10 @@ import com.google.common.io.Files;
 import com.google.common.io.Resources;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
@@ -24,7 +26,7 @@ public class JUnitXmlGenerator {
             transformer.transform(input, new StreamResult(outputStream));
 
             Files.write(outputStream.toByteArray(), junitReportFile);
-        } catch (Exception e) {
+        } catch (IOException | TransformerException e) {
             throw new RuntimeException("Could not generate JUnit report", e);
         }
     }

@@ -2,6 +2,7 @@ package eu.nets.burp.maven;
 
 import com.google.common.base.Charsets;
 import java.io.BufferedWriter;
+import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
 import org.apache.maven.plugin.AbstractMojo;
@@ -52,7 +53,7 @@ public class StopBurpProxyMojo extends AbstractMojo {
 
             outputWriter.write(key);
             getLog().info("Burp proxy stopped.");
-        } catch (Exception e) {
+        } catch (IOException e) {
             getLog().error("Could not connect to localhost:" + port, e);
             getLog().error("Could not stop Burp proxy");
         } finally {
@@ -61,8 +62,8 @@ public class StopBurpProxyMojo extends AbstractMojo {
                 if (socket != null) {
                     socket.close();
                 }
-            } catch (Exception ex) {
-                getLog().error("Could not close socket: " + ex);
+            } catch (IOException e) {
+                getLog().error("Could not close socket: " + e);
             }
         }
     }

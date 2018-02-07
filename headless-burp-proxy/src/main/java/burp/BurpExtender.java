@@ -1,8 +1,11 @@
 package burp;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.google.common.base.Joiner;
-import java.io.File;
-import java.util.Map;
+import java.io.IOException;
+import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
 import org.kohsuke.args4j.Option;
 import org.kohsuke.args4j.ParserProperties;
@@ -10,12 +13,6 @@ import org.kohsuke.args4j.ParserProperties;
 import static com.google.common.base.Throwables.getStackTraceAsString;
 
 public class BurpExtender implements IBurpExtender, IProxyListener, IExtensionStateListener {
-
-    @Option(name = "-i", aliases = "--initial-state", usage = "Initial Burp state file", metaVar = "<file>")
-    private File initialBurpState = new File("initial-burp-proxy.state");
-
-    @Option(name = "-o", aliases = "--output-state", usage = "Output Burp state file", metaVar = "<file>")
-    private File outputBurpState = new File("output-burp-proxy.state");
 
     @Option(name = "--proxy-port", usage = "Proxy port")
     private int proxyPort = 4646;
@@ -32,6 +29,8 @@ public class BurpExtender implements IBurpExtender, IProxyListener, IExtensionSt
     @Option(name = "-v", aliases = "--verbose", usage = "Enable verbose output")
     private boolean verbose = false;
 
+    private ObjectMapper objectMapper;
+
     private IBurpExtenderCallbacks callbacks;
 
     /**
@@ -40,6 +39,7 @@ public class BurpExtender implements IBurpExtender, IProxyListener, IExtensionSt
     @Override
     public void registerExtenderCallbacks(IBurpExtenderCallbacks extenderCallbacks) {
         this.callbacks = extenderCallbacks;
+        this.objectMapper = new ObjectMapper();
 
         callbacks.setExtensionName("Headless Burp Proxy");
 
@@ -64,7 +64,7 @@ public class BurpExtender implements IBurpExtender, IProxyListener, IExtensionSt
     }
 
     /**
-     * Parse and process the command line arguments and verify and load the configuration file supplied by the user
+     * Parse and process the command line arguments and verify and load the configuration file supplied by the user.
      *
      * @param args The command line arguments that were passed to Burp on startup
      */
@@ -76,22 +76,19 @@ public class BurpExtender implements IBurpExtender, IProxyListener, IExtensionSt
             log("Arguments to headless burp: " + Joiner.on(" ").join(args));
             parser.parseArgument(args);
 
-            if (initialBurpState != null && initialBurpState.exists()) {
-                log("Restoring burp state from file: [" + initialBurpState.getName() + "]");
-                callbacks.restoreState(initialBurpState);
-            }
+            String configAsJson = callbacks.saveConfigAsJson();
+            JsonNode config = objectMapper.readTree(configAsJson);
 
-            Map<String, String> burpConfig = callbacks.saveConfig();
-            burpConfig.put("suite.inScopeOnly", "true");
+            ((ObjectNode) config.path("proxy").path("request_listeners").get(0)).put("listener_port", proxyPort);
+            callbacks.loadConfigFromJson(config.toString());
             log("Using proxy 127.0.0.1:" + proxyPort);
-            burpConfig.put("proxy.listener", null);
-            burpConfig.put("proxy.listener0", "1." + proxyPort + ".1.0..0.0.1.0..0..0..0.");
-            callbacks.loadConfig(burpConfig);
 
             log("Headless Burp Proxy fully configured");
-        } catch (Exception e) {
+        } catch (CmdLineException e) {
             log("Could not parse commandline arguments, quitting: " + getStackTraceAsString(e));
             parser.printUsage(System.err);
+        } catch (IOException e) {
+            log("Could not parse burp configuration, quitting: " + getStackTraceAsString(e));
         }
     }
 
@@ -121,15 +118,10 @@ public class BurpExtender implements IBurpExtender, IProxyListener, IExtensionSt
 
     /**
      * Register a shutdown listener and wait for a shutdown request.
-     *
-     * @throws Exception
      */
-    private void registerShutdownListenerAndWaitForShutdown() throws Exception {
+    private void registerShutdownListenerAndWaitForShutdown() {
         ShutdownListener shutdownHandler = new ShutdownListener(shutdownPort, shutdownKey, () -> {
             log("Received request to stop proxy");
-            log("Saving the state to " + outputBurpState.getAbsolutePath());
-            callbacks.saveState(outputBurpState);
-
             log("Exiting burpsuite...");
             callbacks.exitSuite(promptUserOnShutdown);
         });

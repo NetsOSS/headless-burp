@@ -18,6 +18,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>1.8</java.version>
+    <dependency-check.skip>false</dependency-check.skip>
     <checkstyle-config.location>${project.basedir}</checkstyle-config.location>
     <findbugs-excludefilter.location>${project.basedir}/../findbugs-excludefilter.xml
     </findbugs-excludefilter.location>
@@ -62,6 +63,12 @@
       <version>23.5-jre</version>
     </dependency>
 
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.9.4</version>
+    </dependency>
+
     <!-- test -->
     <dependency>
       <groupId>junit</groupId>
@@ -87,16 +94,6 @@
     <defaultGoal>clean install</defaultGoal>
 
     <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.3</version>
-        <configuration>
-          <source>${java.version}</source>
-          <target>${java.version}</target>
-          <encoding>UTF-8</encoding>
-        </configuration>
-      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-source-plugin</artifactId>
@@ -153,6 +150,30 @@
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.3</version>
+        <configuration>
+          <compilerId>javac-with-errorprone</compilerId>
+          <encoding>UTF-8</encoding>
+          <source>${java.version}</source>
+          <target>${java.version}</target>
+          <forceJavacCompilerUse>true</forceJavacCompilerUse>
+        </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>org.codehaus.plexus</groupId>
+            <artifactId>plexus-compiler-javac-errorprone</artifactId>
+            <version>2.8</version>
+          </dependency>
+          <dependency>
+            <groupId>com.google.errorprone</groupId>
+            <artifactId>error_prone_core</artifactId>
+            <version>2.2.0</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
         <version>2.17</version>
         <dependencies>
@@ -195,6 +216,13 @@
           <excludeFilterFile>${findbugs-excludefilter.location}</excludeFilterFile>
           <excludeBugsFile>${project.basedir}/findbugs-base.xml</excludeBugsFile>
           <fork>true</fork>
+          <plugins>
+            <plugin>
+              <groupId>com.h3xstream.findsecbugs</groupId>
+              <artifactId>findsecbugs-plugin</artifactId>
+              <version>LATEST</version>
+            </plugin>
+          </plugins>
         </configuration>
         <executions>
           <execution>
@@ -205,7 +233,23 @@
           </execution>
         </executions>
       </plugin>
-
+      <plugin>
+        <groupId>org.owasp</groupId>
+        <artifactId>dependency-check-maven</artifactId>
+        <version>3.1.1</version>
+        <configuration>
+          <cveValidForHours>12</cveValidForHours>
+          <failBuildOnCVSS>4</failBuildOnCVSS>
+          <skip>${dependency-check.skip}</skip>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>check</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
@@ -249,6 +293,7 @@
       <properties>
         <checkstyle.skip>true</checkstyle.skip>
         <findbugs.skip>true</findbugs.skip>
+        <dependency-check.skip>true</dependency-check.skip>
       </properties>
     </profile>
   </profiles>

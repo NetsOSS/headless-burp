@@ -1,6 +1,7 @@
-## Headless Burp Scanner
+Headless Burp Scanner
+=====================
 
-Provides an extension to Burp that allows you to run the Burp Scanner tool in headless mode.
+Provides an extension to Burp that allows you to run the Burp scanner tool in headless mode.
 
 ### Configuration
 
@@ -32,31 +33,29 @@ For an example configuration file, see [config.xml]
 
 On *nix:
 
-    /usr/java/latest8/bin/java -Xmx1G -Djava.awt.headless=true -classpath headless-burp-scanner-master-SNAPSHOT-jar-with-dependencies.jar:burpsuite_pro_v1.6.26.jar burp.StartBurp -c config.xml
+    java -Xmx1G -Djava.awt.headless=true \
+    -classpath headless-burp-scanner.jar:burpsuite_pro_v1.7.31.jar burp.StartBurp \
+    --project-file=project.burp -c config.xml
 
 On Cygwin:
  
-    java -Xmx1G -Djava.awt.headless=true -classpath "headless-burp-scanner-master-SNAPSHOT-jar-with-dependencies.jar;burpsuite_pro_v1.6.26.jar" burp.StartBurp -c config.xml -s burp_state
+    java -Xmx1G -Djava.awt.headless=true \
+    -classpath "headless-burp-scanner.jar;burpsuite_pro_v1.7.31.jar" burp.StartBurp \
+    --project-file=project.burp -c config.xml
 
 ### Commandline Options
 
-    -c (--config) <file> : Configuration file
-    -p (--prompt)        : Indicates whether to prompt the user to confirm the
-                           shutdown (useful for debugging)
-    -s (--state) <file>  : Burp state file
-    -t (--thread) VAL    : Number of scanner threads to run
-    -v (--verbose)       : Enable verbose output
+    --project-file=VAL          Open the specified project file; this will be created as a new project if the file does not exist (mandatory)
+    -c (--config) <file>        Configuration file (mandatory)
+    -p (--prompt)               Indicates whether to prompt the user to confirm the shutdown (useful for debugging)
+    -v (--verbose)              Enable verbose output
 
-### Running against an SSL enabled application
+    --diagnostics               Print diagnostic information
+    --use-defaults              Start with default settings
+    --collaborator-server       Run in Collaborator server mode
+    --collaborator-config=VAL   Specify Collaborator server configuration file; defaults to collaborator.config
+    --config-file=VAL           Load the specified project configuration file(s); this option may be repeated to load multiple files
+    --user-config-file=VAL      Load the specified user configuration file(s); this option may be repeated to load multiple files
+    --auto-repair               Automatically repair a corrupted project file specified by the --project-file option
 
-
-#### Generate java keystore
-
-    `keytool.exe -import -keystore burp.jks -file test.nets.no.crt -alias test.nets.no`
-
-#### Add commandline args
-
-    -Djavax.net.ssl.keyStore=burp.jks -Djavax.net.ssl.keyStorePassword=headlessburp -Djavax.net.ssl.keyStoreType=jks
-
-
-[config.xml]: ../blob/master/headless-burp-scanner/src/test/resources/config.xml
+[config.xml]: https://github.com/NetsOSS/headless-burp/blob/master/headless-burp-scanner/src/test/resources/config.xml

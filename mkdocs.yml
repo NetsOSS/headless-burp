@@ -42,7 +42,9 @@ pages:
     - 'Burp': 'background/burp.md'
     - 'Automation': 'background/automation.md'
   - 'User Guide':
-    - 'Maven Plugin': 'user-guide/maven-plugin.md'
+    - 'Installation': 'user-guide/installation.md'
+    - 'Maven Plugin':
+      - 'Usage': 'user-guide/maven-plugin/usage.md'
     - 'Burp Extensions':
       - 'Headless Burp Proxy': 'user-guide/burp-extensions/headless-burp-proxy.md'
       - 'Headless Burp Scanner': 'user-guide/burp-extensions/headless-burp-scanner.md'

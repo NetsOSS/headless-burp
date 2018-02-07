@@ -83,7 +83,7 @@ public class ShutdownListener {
                         } finally {
                             Closeables.closeQuietly(reader);
                         }
-                    } catch (Exception e) {
+                    } catch (IOException e) {
                         //Ignore
                     }
                 }

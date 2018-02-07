@@ -11,7 +11,6 @@ import java.io.File;
 import java.net.URL;
 import java.time.Instant;
 import java.util.List;
-import java.util.Map;
 import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
 import org.kohsuke.args4j.Option;
@@ -26,12 +25,6 @@ public class BurpExtender implements IBurpExtender, IHttpListener, IScannerListe
 
     @Option(name = "-c", aliases = "--config", usage = "Configuration file", metaVar = "<file>", required = true)
     private File configurationFile = new File("configuration.txt");
-
-    @Option(name = "-s", aliases = "--state", usage = "Burp state file", metaVar = "<file>")
-    private File burpStateFile = new File("burpstate");
-
-    @Option(name = "-t", aliases = "--thread", usage = "Number of scanner threads to run")
-    private String scannerThreads = "25";
 
     @Option(name = "-v", aliases = "--verbose", usage = "Enable verbose output")
     private boolean verbose = false;
@@ -93,11 +86,7 @@ public class BurpExtender implements IBurpExtender, IHttpListener, IScannerListe
                 IRequestInfo requestInfo = helpers.analyzeRequest(siteMapItem);
                 URL url = requestInfo.getUrl();
                 if (verbose) {
-                    try {
-                        log("Scanning: " + requestInfo.getMethod() + " : " + url);
-                    } catch (Exception e) {
-                        //Ignore
-                    }
+                    log("Scanning: " + requestInfo.getMethod() + " : " + url);
                 }
 
                 if (!config.getExclusions().contains(url)) {
@@ -150,19 +139,6 @@ public class BurpExtender implements IBurpExtender, IHttpListener, IScannerListe
             if (config.getUrls() == null && config.getSiteMap() == null) {
                 throw new RuntimeException("Must provide either scope or sitemap");
             }
-
-            if (burpStateFile != null && burpStateFile.exists()) {
-                log("Restoring burp state from file: [" + burpStateFile.getName() + "]");
-                callbacks.restoreState(burpStateFile);
-            }
-
-            Map<String, String> burpConfig = callbacks.saveConfig();
-            burpConfig.put("suite.inScopeOnly", "true");
-            if (scannerThreads != null) {
-                log("Using number of scanner-threads:" + scannerThreads);
-                burpConfig.put("scanner.numthreads", scannerThreads);
-            }
-            callbacks.loadConfig(burpConfig);
 
             log("Headless Burp Scanner loaded with:");
             log("configuration file: " + configurationFile.getName());

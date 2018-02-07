@@ -9,7 +9,6 @@ import java.io.InputStreamReader;
 import java.util.List;
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.plugin.AbstractMojo;
-import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.logging.Log;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.codehaus.plexus.util.IOUtil;
@@ -24,6 +23,12 @@ public abstract class AbstractBurpMojo extends AbstractMojo {
      */
     @Parameter(required = true)
     private File burpSuite;
+
+    /**
+     * Location of the burpSuite project file.
+     */
+    @Parameter(required = true)
+    private File burpProjectFile;
 
     /**
      * Run headless.
@@ -75,18 +80,18 @@ public abstract class AbstractBurpMojo extends AbstractMojo {
      *
      * @return Commandline arguments for the burp extension
      */
-    protected abstract List<String> createBurpCommandLine();
+    protected abstract List<String> createBurpExtensionCommandLineArguments();
 
     protected abstract void execute(ProcessBuilder processBuilder);
 
     @Override
-    public void execute() throws MojoExecutionException {
-        if (burpSuite == null || !burpSuite.exists()) {
-            getLog().error("Could not find burpSuite jar");
+    public void execute() {
+        if (skip) {
             getLog().debug("Skipping execution.");
             return;
         }
-        if (skip) {
+        if (burpSuite == null || !burpSuite.exists()) {
+            getLog().error("Could not find burpSuite jar");
             getLog().debug("Skipping execution.");
             return;
         }
@@ -96,11 +101,18 @@ public abstract class AbstractBurpMojo extends AbstractMojo {
     }
 
     protected ProcessBuilder createBurpProcessBuilder() {
-        List<String> burpCommandLine = createBurpCommandLine();
+        List<String> arguments = createBurpExtensionCommandLineArguments();
+        arguments.add("--project-file=" + burpProjectFile.getAbsolutePath());
+        arguments.add("--unpause-spider-and-scanner");
+        if (promptOnExit) {
+            arguments.add("-p");
+        }
+        if (verbose) {
+            arguments.add("-v");
+        }
 
-        String extensionClassPath = getBurpExtensionClasspath();
-        ProcessBuilder builder = new ProcessBuilder("java", "-Xmx1G", "-Djava.awt.headless=" + headless, "-classpath", extensionClassPath, "burp.StartBurp");
-        builder.command().addAll(burpCommandLine);
+        ProcessBuilder builder = new ProcessBuilder("java", "-Xmx1G", "-Djava.awt.headless=" + headless, "-classpath", getBurpExtensionClasspath(), "burp.StartBurp");
+        builder.command().addAll(arguments);
         builder.redirectErrorStream(true);
 
         return builder;
@@ -187,23 +199,4 @@ public abstract class AbstractBurpMojo extends AbstractMojo {
         }
     }
 
-    public File getBurpSuite() {
-        return burpSuite;
-    }
-
-    public boolean isHeadless() {
-        return headless;
-    }
-
-    public boolean isPromptOnExit() {
-        return promptOnExit;
-    }
-
-    public boolean isVerbose() {
-        return verbose;
-    }
-
-    public boolean isSkip() {
-        return skip;
-    }
 }

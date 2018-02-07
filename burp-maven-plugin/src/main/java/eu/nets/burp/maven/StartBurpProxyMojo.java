@@ -1,7 +1,6 @@
 package eu.nets.burp.maven;
 
 import com.google.common.collect.Lists;
-import java.io.File;
 import java.util.List;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
@@ -26,12 +25,6 @@ public class StartBurpProxyMojo extends AbstractBurpMojo {
     @Parameter(defaultValue = "4444")
     private int shutdownPort;
 
-    /**
-     * Location of the initial burpSuite state file to restore to.
-     */
-    @Parameter
-    private File initialBurpState;
-
     @Override
     protected String getBurpExtenderToRun() {
         return "headless-burp-proxy";
@@ -43,25 +36,14 @@ public class StartBurpProxyMojo extends AbstractBurpMojo {
     }
 
     @Override
-    protected List<String> createBurpCommandLine() {
+    protected List<String> createBurpExtensionCommandLineArguments() {
         List<String> command = Lists.newArrayList();
+
         command.add("--proxy-port");
         command.add(String.valueOf(proxyPort));
 
         command.add("--shutdown-port");
         command.add(String.valueOf(shutdownPort));
-
-        if (initialBurpState != null && initialBurpState.canRead()) {
-            command.add("-i");
-            command.add("\"" + initialBurpState.getAbsolutePath() + "\"");
-        }
-
-        if (isPromptOnExit()) {
-            command.add("-p");
-        }
-        if (isVerbose()) {
-            command.add("-v");
-        }
 
         return command;
     }

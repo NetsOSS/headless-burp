@@ -19,3 +19,6 @@ dependency-reduced-pom.xml
 ### MkDocs
 site
 docs.zip
+
+### BurpSuite jar
+burpsuite_pro_*.jar

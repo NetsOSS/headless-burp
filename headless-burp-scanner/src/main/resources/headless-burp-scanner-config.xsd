@@ -3,16 +3,15 @@
 <xsd:schema xmlns="http://nets.eu/burp/config"
             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
             targetNamespace="http://nets.eu/burp/config"
-            elementFormDefault="qualified"
-            attributeFormDefault="unqualified">
+            elementFormDefault="qualified">
 
   <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
 
   <xsd:annotation>
     <xsd:documentation>
       <![CDATA[
-      Headless Burp POC Config Schema
-      Namespace definitions to define a schema for Headless Burp POC
+      Headless Burp Scanner configuration schema
+      Namespace definitions to define a schema for Headless Burp Scanner
       ]]>
     </xsd:documentation>
   </xsd:annotation>
@@ -21,7 +20,7 @@
     <xsd:annotation>
       <xsd:documentation>
         <![CDATA[
-        Root element for headless burp poc config
+        Root element for headless burp scanner config
         ]]>
       </xsd:documentation>
     </xsd:annotation>

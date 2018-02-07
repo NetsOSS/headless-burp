@@ -16,12 +16,6 @@ import static eu.nets.burp.maven.Utils.encloseInDoubleQuotes;
 public class StartBurpScannerMojo extends AbstractBurpMojo {
 
     /**
-     * Location of the burpSuite state file to restore to.
-     */
-    @Parameter
-    private File burpState;
-
-    /**
      * Location of the burp headless configuration file.
      */
     @Parameter(required = true)
@@ -38,23 +32,12 @@ public class StartBurpScannerMojo extends AbstractBurpMojo {
     }
 
     @Override
-    protected List<String> createBurpCommandLine() {
+    protected List<String> createBurpExtensionCommandLineArguments() {
         List<String> command = Lists.newArrayList();
         if (burpConfig != null) {
             command.add("-c");
             command.add(encloseInDoubleQuotes(burpConfig.getAbsolutePath()));
         }
-        if (burpState != null && burpState.canRead()) {
-            command.add("-s");
-            command.add(encloseInDoubleQuotes(burpState.getAbsolutePath()));
-        }
-        if (isPromptOnExit()) {
-            command.add("-p");
-        }
-        if (isVerbose()) {
-            command.add("-v");
-        }
-
         return command;
     }
 
