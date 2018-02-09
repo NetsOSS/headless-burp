@@ -592,17 +592,15 @@
 <h3 id="start-burp-proxy">Start Burp Proxy<a class="headerlink" href="#start-burp-proxy" title="Permanent link">&para;</a></h3>
 <p>On *nix:</p>
 <div class="codehilite"><pre><span></span>java -Xmx1G -Djava.awt.headless=true \
--classpath headless-burp-proxy.jar:burpsuite_pro_v1.7.31.jar burp.StartBurp \
+-classpath headless-burp-proxy-master-SNAPSHOT-jar-with-dependencies.jar:burpsuite_pro_v1.7.31.jar burp.StartBurp \
 --project-file=project.burp
 </pre></div>
-
 
 <p>On Cygwin:</p>
 <div class="codehilite"><pre><span></span>java -Xmx1G -Djava.awt.headless=true \
--classpath &quot;headless-burp-proxy.jar;burpsuite_pro_v1.7.31.jar&quot; burp.StartBurp 
+-classpath &quot;headless-burp-proxy-master-SNAPSHOT-jar-with-dependencies.jar;burpsuite_pro_v1.7.31.jar&quot; burp.StartBurp \
 --project-file=project.burp
 </pre></div>
-
 
 <h4 id="commandline-options">Commandline Options<a class="headerlink" href="#commandline-options" title="Permanent link">&para;</a></h4>
 <div class="codehilite"><pre><span></span>--project-file=VAL          Open the specified project file; this will be created as a new project if the file does not exist (mandatory)
@@ -620,7 +618,6 @@
 --user-config-file=VAL      Load the specified user configuration file(s); this option may be repeated to load multiple files
 --auto-repair               Automatically repair a corrupted project file specified by the --project-file option
 </pre></div>
-
 
 <h3 id="stop-burp-proxy">Stop Burp Proxy<a class="headerlink" href="#stop-burp-proxy" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span>echo SHUTDOWN &gt;&gt; /dev/tcp/127.0.0.1/4444

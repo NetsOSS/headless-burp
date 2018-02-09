@@ -489,8 +489,8 @@
 <p>However, you can build an extension to burp and get burp to load it. Several programming languages are supported, including Java, Python and Ruby. </p>
 <p>And there are several developers who have already done this and made their extensions available through <a href="https://portswigger.net/bappstore">BApp Store</a>. That is the Burp community for sharing these extensions. </p>
 <p>One of the most popular extensions for running Burp headless is <a href="https://github.com/integrissecurity/carbonator">Carbonator</a>. By giving it a target scope, it spiders the scope and performs a scan and a HTML report is generated at the end.  </p>
-<p>However, we wanted more!</p>
-<p>We wanted JUnit like output in Jenkins and a failed build whenever any vulnerabilities were found. And we also wanted the possibility to flag false positives. That is after a potential security hole has been found and reported, you investigate it in your code and find that no way this can happen, you want to configure this so that it will not be reported on the next run. </p>
+<p>However, we wanted more!
+We wanted JUnit like output in Jenkins and a failed build whenever any vulnerabilities were found. And we also wanted the possibility to flag false positives. That is after a potential security hole has been found and reported, you investigate it in your code and find that no way this can happen, you want to configure this so that it will not be reported on the next run. </p>
 <p>And just performing a scan on a target doesnt really give that much in our javascript web application world today by reasons I’ll get back to later. So we also had to be able to automatically proxy the application to build that sitemap. </p>
 <p>So we first decided to port <a href="https://github.com/integrissecurity/carbonator">Carbonator</a> to Java (as we didnt know python very well), and built our own extension.</p>
                 
