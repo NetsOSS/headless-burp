@@ -8,4 +8,4 @@ The spider can then be used as a tool to crawl through the rest of the applicati
 
 This site map built by the proxy and spider is then what the scanner uses to test your application for vulnerabilities. It performs this test by automatically attack your site using a number of known hacking techniques, and reports back to you any security issues it finds. 
 
-And these are the three tools  we wanted to automate in our PoC. 
+And these are the three tools we wanted to automate in our PoC. 

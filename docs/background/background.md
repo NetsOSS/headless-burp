@@ -12,7 +12,4 @@ This happens in the very end, making any findings risky to fix and have severe r
 
 We also have a limited pool of security experts, and may in some cases have a long wait ahead of us before pen-test can be performed. 
 
-And we are the lucky ones. We have security experts testing our code. We all know that this is not the case for a lot of web-applications out there. Some have to hire expensive consultants and some doesnt do any security testing at all. 
-
-
-# tl;dr;
+And we are the lucky ones. We have security experts testing our code. We all know that this is not the case for a lot of web-applications out there. Some have to hire expensive consultants and some doesnt do any security testing at all.
