@@ -215,7 +215,6 @@
           <xmlOutput>true</xmlOutput>
           <excludeFilterFile>${findbugs-excludefilter.location}</excludeFilterFile>
           <excludeBugsFile>${project.basedir}/findbugs-base.xml</excludeBugsFile>
-          <fork>true</fork>
           <plugins>
             <plugin>
               <groupId>com.h3xstream.findsecbugs</groupId>

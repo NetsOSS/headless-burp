@@ -120,7 +120,7 @@ The extension has been designed to be versatile and support several scenarios
 
 2. Run as shown in the [usage](#usage) section
 
-### Scenario C: Scan URL(s) for security issues using Burp but supress false positives from the scan report
+### Scenario C: Scan URL(s) for security issues using Burp but suppress false positives from the scan report
 
 1. Add a _false-positives_ block with the issue type and path _(these can be retrieved from a burp scan report)_ to the configuration file.
 You can find more details about [Issue Definitions here]
@@ -157,7 +157,7 @@ You can find more details about [Issue Definitions here]
 
 2. Run as shown in the [usage](#usage) section
 
-### Scenario C: Scan more than just GET requests - Use request.response data derived from running functional/integration tests as input to the scan
+### Scenario D: Scan more than just GET requests - Use request.response data derived from running functional/integration tests as input to the scan
 
 Sometimes, just spidering a target scope and and performing on a scope of URLs doesnt give much value. 
 For e.g. when scanning a web application where routing is handled using JavaScript. 
@@ -171,7 +171,7 @@ The [Headless Burp Proxy] extension provides an simple way to achieve this.
 1. Follow instructions at [Headless Burp Proxy] and start up burp proxy and remember to set the `--project-file` option. This is where the "seed" data for scanning is going to be stored.
 2. Configure your functional/integration tests to go through the burp proxy (defaults to `4646` if you use the extension) by setting HTTP_PROXY or similar.
 3. Run the functional/integration tests against the target.
-4. Create a config.xml with the targetSitemap  (typically, the base URL of the application), scope, exclusions, false-positivies etc.
+4. Create a config.xml with the targetSitemap  (typically, the base URL of the application), scope, exclusions, false-positives etc.
 
 
 ```xml

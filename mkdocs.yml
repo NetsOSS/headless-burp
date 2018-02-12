@@ -1,6 +1,6 @@
 # Project information
 site_name: 'Headless Burp'
-site_description: 'Provides a suite of Burp extensions and a maven plugin to automate security tests using BurpSuite.'
+site_description: 'Provides a suite of Burp Suite extensions and a maven plugin to automate security tests using BurpSuite.'
 site_author: 'Anand Sudhir Prayaga'
 site_url: 'https://NetsOSS.github.io/headless-burp'
 
@@ -43,10 +43,10 @@ pages:
     - 'Automation': 'background/automation.md'
   - 'User Guide':
     - 'Installation': 'user-guide/installation.md'
-    - 'Maven Plugin':
-      - 'Usage': 'user-guide/maven-plugin/usage.md'
     - 'Burp Extensions':
       - 'Headless Burp Proxy': 'user-guide/burp-extensions/headless-burp-proxy.md'
       - 'Headless Burp Scanner': 'user-guide/burp-extensions/headless-burp-scanner.md'
+    - 'Maven Plugin':
+      - 'Usage': 'user-guide/maven-plugin/usage.md'
   - 'Known Issues & Limitations': 'known-issues.md'
   - 'Release Notes': 'release-notes/release-notes-1.0.md'

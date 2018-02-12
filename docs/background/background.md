@@ -6,7 +6,7 @@ Automated unit, integration and acceptance tests, static code analysis ensure es
 
 # Current Scenario
 
-Our current scenario at Nets is that we do all our development in an agile fashion, but as we have very strict requirements to making our applications secure,  a pen-test must be performed before releasing. 
+Our current scenario is that we do all our development in an agile fashion, but as we have very strict requirements to making our applications secure,  a pen-test must be performed before releasing. 
 
 This happens in the very end, making any findings risky to fix and have severe risk for delaying our release. 
 

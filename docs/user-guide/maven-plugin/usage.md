@@ -1,4 +1,5 @@
-# Burp Maven Plugin
+Burp Maven Plugin
+=================
 
 Maven plugin that allows you to run Burp Suite's Proxy and Scanner tools in headless mode.
 
