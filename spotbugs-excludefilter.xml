@@ -26,4 +26,8 @@
     <Class name="eu.nets.burp.JUnitXmlGenerator"/>
     <Bug pattern="MALICIOUS_XSLT,URLCONNECTION_SSRF_FD,XXE_DTD_TRANSFORM_FACTORY,XXE_XSLT_TRANSFORM_FACTORY"/>
   </Match>
+  <Match>
+    <Class name="eu.nets.burp.maven.StreamLog"/>
+    <Bug pattern="INFORMATION_EXPOSURE_THROUGH_AN_ERROR_MESSAGE"/>
+  </Match>
 </FindBugsFilter>
