@@ -1,0 +1,12 @@
+Uuid: d54b11f7af3c4dfeb6b81fb5db72e381
+ExtensionType: 1
+Name: Headless Burp
+RepoName: headless-burp
+ScreenVersion: 1.0
+SerialVersion: 0
+MinPlatformVersion: 0
+ProOnly: False
+Author: Anand Sudhir Prayaga
+ShortDescription: Allows Burp Scanner to be automated, using Spider or an existing Site Map.
+EntryPoint: headless-burp-scanner/target/headless-burp-scanner-master-SNAPSHOT-jar-with-dependencies.jar
+BuildCommand: mvn package -DskipTests=true -Dmaven.javadoc.skip=true -B
