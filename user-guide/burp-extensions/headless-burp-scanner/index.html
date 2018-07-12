@@ -398,12 +398,33 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#build" title="Build" class="md-nav__link">
+    Build
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#usage" title="Usage" class="md-nav__link">
     Usage
   </a>
   
     <nav class="md-nav">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-the-extension-jar" title="Using the extension jar" class="md-nav__link">
+    Using the extension jar
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-the-extension-from-bapp-store" title="Using the extension from BApp Store" class="md-nav__link">
+    Using the extension from BApp Store
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#configuration" title="Configuration" class="md-nav__link">
@@ -572,12 +593,33 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#build" title="Build" class="md-nav__link">
+    Build
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#usage" title="Usage" class="md-nav__link">
     Usage
   </a>
   
     <nav class="md-nav">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-the-extension-jar" title="Using the extension jar" class="md-nav__link">
+    Using the extension jar
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-the-extension-from-bapp-store" title="Using the extension from BApp Store" class="md-nav__link">
+    Using the extension from BApp Store
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#configuration" title="Configuration" class="md-nav__link">
@@ -664,10 +706,16 @@
                 
                 
                 <h1 id="headless-burp-scanner">Headless Burp Scanner<a class="headerlink" href="#headless-burp-scanner" title="Permanent link">&para;</a></h1>
-<p>Provides an extension to Burp that allows you to run Burp Suite's spider and scanner tools in headless mode via command-line.</p>
+<p>Provides an extension to Burp that allows you to run Burp Suite's Spider and Scanner tools in headless mode via command-line.</p>
 <p>However, it can do more!
 It can produce a JUnit like report which in turn could instruct the CI server (maybe <a href="https://jenkins.io/">Jenkins</a>) to mark the build as "failed" whenever any vulnerabilities are found. You can also mark some issues as false positives and those will not be reported anymore on the next scan reports. </p>
+<h3 id="build">Build<a class="headerlink" href="#build" title="Permanent link">&para;</a></h3>
+<p><div class="codehilite"><pre><span></span>./mvnw
+</pre></div>
+The extension is packaged as a fat jar at target/headless-burp-scanner-master-SNAPSHOT-jar-with-dependencies.jar</p>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
+<p>Bu8ld the extension as shown above or install it from the <a href="https://portswigger.net/bappstore/d54b11f7af3c4dfeb6b81fb5db72e381">BApp Store</a></p>
+<h4 id="using-the-extension-jar">Using the extension jar<a class="headerlink" href="#using-the-extension-jar" title="Permanent link">&para;</a></h4>
 <p>On *nix:</p>
 <div class="codehilite"><pre><span></span>java -Xmx1G -Djava.awt.headless<span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
 -classpath headless-burp-scanner-master-SNAPSHOT-jar-with-dependencies.jar:burpsuite_pro_v1.7.31.jar burp.StartBurp <span class="se">\</span>
@@ -680,18 +728,30 @@ It can produce a JUnit like report which in turn could instruct the CI server (m
 --project-file<span class="o">=</span>project.burp -c config.xml
 </pre></div>
 
+<h4 id="using-the-extension-from-bapp-store">Using the extension from <a href="https://portswigger.net/bappstore/d54b11f7af3c4dfeb6b81fb5db72e381">BApp Store</a><a class="headerlink" href="#using-the-extension-from-bapp-store" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span>java -Xmx1G -Djava.awt.headless<span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
+-classpath burpsuite_pro_v1.7.31.jar burp.StartBurp <span class="se">\</span>
+--project-file<span class="o">=</span>project.burp -c config.xml
+</pre></div>
+
+<p>On Cygwin:</p>
+<div class="codehilite"><pre><span></span>java -Xmx1G -Djava.awt.headless<span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
+-classpath <span class="s2">&quot;burpsuite_pro_v1.7.31.jar&quot;</span> burp.StartBurp <span class="se">\</span>
+--project-file<span class="o">=</span>project.burp -c config.xml
+</pre></div>
+
 <h3 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
 <span class="nt">&lt;config</span> <span class="na">xmlns=</span><span class="s">&quot;http://nets.eu/burp/config&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;reportType&gt;</span>HTML<span class="nt">&lt;/reportType&gt;</span> <span class="c">&lt;!-- JUNIT|HTML|XML --&gt;</span>
-    <span class="nt">&lt;targetSitemap&gt;</span><span class="cp">&lt;![CDATA[http://localhost:5432]]&gt;</span><span class="nt">&lt;/targetSitemap&gt;</span>
-    <span class="nt">&lt;scope&gt;</span>
-        <span class="nt">&lt;url&gt;</span><span class="cp">&lt;![CDATA[http://localhost:5432/]]&gt;</span><span class="nt">&lt;/url&gt;</span>
-        <span class="nt">&lt;exclusions&gt;</span>
+    <span class="nt">&lt;targetSitemap&gt;</span><span class="cp">&lt;![CDATA[http://localhost:5432]]&gt;</span><span class="nt">&lt;/targetSitemap&gt;</span> <span class="c">&lt;!-- atleast one of targetSitemap or scope must be specified --&gt;</span>
+    <span class="nt">&lt;scope&gt;</span> <span class="c">&lt;!-- atleast one of targetSitemap or scope must be specified --&gt;</span>
+        <span class="nt">&lt;url&gt;</span><span class="cp">&lt;![CDATA[http://localhost:5432/]]&gt;</span><span class="nt">&lt;/url&gt;</span> <span class="c">&lt;!-- multiple allowed --&gt;</span>
+        <span class="nt">&lt;exclusions&gt;</span> <span class="c">&lt;!-- optional --&gt;</span>
             <span class="nt">&lt;exclusion&gt;</span><span class="cp">&lt;![CDATA[localhost:5432/#/logout]]&gt;</span><span class="nt">&lt;/exclusion&gt;</span>
         <span class="nt">&lt;/exclusions&gt;</span>
     <span class="nt">&lt;/scope&gt;</span>
-    <span class="nt">&lt;false-positives&gt;</span>
+    <span class="nt">&lt;false-positives&gt;</span> <span class="c">&lt;!-- optional --&gt;</span>
         <span class="nt">&lt;issue&gt;</span>
             <span class="nt">&lt;type&gt;</span>5244416<span class="nt">&lt;/type&gt;</span>
             <span class="nt">&lt;path&gt;</span>.*<span class="nt">&lt;/path&gt;</span>
@@ -845,7 +905,7 @@ The <a href="../headless-burp-proxy">Headless Burp Proxy</a> extension provides 
 <p>The headless burp scanner plugin can do these</p>
 <ul>
 <li>Run burp scan in headless or GUI mode</li>
-<li>Specify target sitemap and add URL(d) to Burp's target scope</li>
+<li>Specify target sitemap and add URL(s) to Burp's target scope</li>
 <li>Use the "seed" request/response data generated by any integration/functional tests you might have</li>
 <li>Mark issues as false positives, these will not be reported in the scan report anymore.</li>
 <li>Spider the target scope.</li>
