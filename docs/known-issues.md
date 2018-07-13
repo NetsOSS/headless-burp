@@ -17,8 +17,7 @@ Please feel free to report any issues you face when using the extensions and the
 
 ## TODO: 
 * Publish the maven plugin to maven central and jcenter
-* Publish the extensions to BApp store
-* Add **much** more documentation
+* Add more documentation
 * ...
 
 [Create new issue]: https://github.com/NetsOSS/headless-burp/issues/new

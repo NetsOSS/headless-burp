@@ -11,12 +11,6 @@ Full documentation for the project is available at https://netsoss.github.io/hea
 
 ---
 
-* [Headless Burp Proxy](#headless-burp-proxy)
-  * [Features](#features)
-  * [Usage](#usage)
-	* [Start Burp Proxy](#start-burp-proxy)
-	* [Command-line Options](#command-line-options)
-	* [Stop Burp Proxy](#stop-burp-proxy)
 * [Headless Burp Scanner](#headless-burp-scanner)
   * [Usage](#usage-1)
     * [Configuration](#configuration)
@@ -27,77 +21,36 @@ Full documentation for the project is available at https://netsoss.github.io/hea
     * [Scenario C: Scan URL(s) for security issues using Burp but suppress false positives from the scan report](#scenario-c-scan-urls-for-security-issues-using-burp-but-suppress-false-positives-from-the-scan-report)
     * [Scenario D: Scan more than just GET requests. Use data derived from running functional tests as input to the scan](#scenario-d-scan-more-than-just-get-requests-use-data-derived-from-running-functional-tests-as-input-to-the-scan)
   * [tl;dr;](#tldr)
+* [Headless Burp Proxy](#headless-burp-proxy)
+  * [Features](#features)
+  * [Usage](#usage)
+	* [Start Burp Proxy](#start-burp-proxy)
+	* [Command-line Options](#command-line-options)
+	* [Stop Burp Proxy](#stop-burp-proxy)
 * [Burp Maven Plugin](#burp-maven-plugin)
   * [Full example](#full-example)
-
-Headless Burp Proxy
-=====================
-
-Provides an extension to Burp that allows you to run, stop and capture results from the Burp proxy tool in headless mode.
-
-### Features
-* Starts the burp proxy on a provided port (default `4646`)
-* Register a shutdown listener and wait for a shutdown request (default `"SHUTDOWN"`) on port (default `4444`).
-* On receiving a shutdown request, saves the burp project file along with all the information regarding the proxied requests and responses, and finally shuts down Burp
-
-### Usage
-
-#### Start Burp Proxy
-
-On *nix:
-
-```
-java -Xmx1G -Djava.awt.headless=true \
--classpath headless-burp-proxy-master-SNAPSHOT-jar-with-dependencies.jar:burpsuite_pro_v1.7.31.jar burp.StartBurp \
---project-file=project.burp
-```
-
-On Cygwin:
-
-```
-java -Xmx1G -Djava.awt.headless=true \
--classpath "headless-burp-proxy-master-SNAPSHOT-jar-with-dependencies.jar;burpsuite_pro_v1.7.31.jar" burp.StartBurp \
---project-file=project.burp
-```
-
-#### Command-line Options
-
-```
---project-file=VAL          Open the specified project file; this will be created as a new project if the file does not exist (mandatory)
---proxyPort VAL             Proxy port
---shutdownPort VAL          Shutdown port
---shutdownKey VAL           Shutdown key
--p (--prompt)               Indicates whether to prompt the user to confirm the shutdown (useful for debugging)
--v (--verbose)              Enable verbose output
-
---diagnostics               Print diagnostic information
---use-defaults              Start with default settings
---collaborator-server       Run in Collaborator server mode
---collaborator-config=VAL   Specify Collaborator server configuration file; defaults to collaborator.config
---config-file=VAL           Load the specified project configuration file(s); this option may be repeated to load multiple files
---user-config-file=VAL      Load the specified user configuration file(s); this option may be repeated to load multiple files
---auto-repair               Automatically repair a corrupted project file specified by the --project-file option
-```
-
-#### Stop Burp Proxy
-
-```
-echo SHUTDOWN >> /dev/tcp/127.0.0.1/4444
-or
-echo SHUTDOWN | netcat 127.0.0.1 4444
-or
-echo SHUTDOWN | ncat 127.0.0.1 4444
-```
 
 Headless Burp Scanner
 =====================
 
-Provides an extension to Burp that allows you to run Burp Suite's spider and scanner tools in headless mode via command-line.
+Provides an extension to Burp that allows you to run Burp Suite's Spider and Scanner tools in headless mode via command-line.
 
 However, it can do more!
 It can produce a JUnit like report which in turn could instruct the CI server (maybe [Jenkins]) to mark the build as "failed" whenever any vulnerabilities are found. You can also mark some issues as false positives and those will not be reported anymore on the next scan reports. 
 
+### Build
+
+```
+./mvnw
+
+```
+The extension is packaged as a fat jar at target/headless-burp-scanner-master-SNAPSHOT-jar-with-dependencies.jar
+
 ### Usage
+
+Bu8ld the extension as shown above or install it from the [BApp Store]
+
+#### Using a loclally built extension jar
 
 On *nix:
 
@@ -115,20 +68,36 @@ java -Xmx1G -Djava.awt.headless=true \
 --project-file=project.burp -c config.xml
 ```
 
+#### Using the extension from [BApp Store]
+
+```sh
+java -Xmx1G -Djava.awt.headless=true \
+-classpath burpsuite_pro_v1.7.31.jar burp.StartBurp \
+--project-file=project.burp -c config.xml
+```
+
+On Cygwin:
+
+```sh
+java -Xmx1G -Djava.awt.headless=true \
+-classpath "burpsuite_pro_v1.7.31.jar" burp.StartBurp \
+--project-file=project.burp -c config.xml
+```
+
 #### Configuration
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <config xmlns="http://nets.eu/burp/config">
     <reportType>HTML</reportType> <!-- JUNIT|HTML|XML -->
-    <targetSitemap><![CDATA[http://localhost:5432]]></targetSitemap>
-    <scope>
-        <url><![CDATA[http://localhost:5432/]]></url>
-        <exclusions>
+    <targetSitemap><![CDATA[http://localhost:5432]]></targetSitemap> <!-- atleast one of targetSitemap or scope must be specified -->
+    <scope> <!-- atleast one of targetSitemap or scope must be specified -->
+        <url><![CDATA[http://localhost:5432/]]></url> <!-- multiple allowed -->
+        <exclusions> <!-- optional -->
             <exclusion><![CDATA[localhost:5432/#/logout]]></exclusion>
         </exclusions>
     </scope>
-    <false-positives>
+    <false-positives> <!-- optional -->
         <issue>
             <type>5244416</type>
             <path>.*</path>
@@ -292,7 +261,7 @@ The [Headless Burp Proxy] extension provides an simple way to achieve this.
 The headless burp scanner plugin can do these
 
 * Run burp scan in headless or GUI mode
-* Specify target sitemap and add URL(d) to Burp's target scope
+* Specify target sitemap and add URL(s) to Burp's target scope
 * Use the "seed" request/response data generated by any integration/functional tests you might have
 * Mark issues as false positives, these will not be reported in the scan report anymore.
 * Spider the target scope.
@@ -357,8 +326,67 @@ The plugin is essentially a wrapper around the [Headless Burp Proxy] and [Headle
     ...
 </build>
 ```
+Headless Burp Proxy
+=====================
+
+Provides an extension to Burp that allows you to run, stop and capture results from the Burp proxy tool in headless mode.
+
+### Features
+* Starts the burp proxy on a provided port (default `4646`)
+* Register a shutdown listener and wait for a shutdown request (default `"SHUTDOWN"`) on port (default `4444`).
+* On receiving a shutdown request, saves the burp project file along with all the information regarding the proxied requests and responses, and finally shuts down Burp
+
+### Usage
+
+#### Start Burp Proxy
+
+On *nix:
+
+```
+java -Xmx1G -Djava.awt.headless=true \
+-classpath headless-burp-proxy-master-SNAPSHOT-jar-with-dependencies.jar:burpsuite_pro_v1.7.31.jar burp.StartBurp \
+--project-file=project.burp
+```
+
+On Cygwin:
+
+```
+java -Xmx1G -Djava.awt.headless=true \
+-classpath "headless-burp-proxy-master-SNAPSHOT-jar-with-dependencies.jar;burpsuite_pro_v1.7.31.jar" burp.StartBurp \
+--project-file=project.burp
+```
+
+#### Command-line Options
+
+```
+--project-file=VAL          Open the specified project file; this will be created as a new project if the file does not exist (mandatory)
+--proxyPort VAL             Proxy port
+--shutdownPort VAL          Shutdown port
+--shutdownKey VAL           Shutdown key
+-p (--prompt)               Indicates whether to prompt the user to confirm the shutdown (useful for debugging)
+-v (--verbose)              Enable verbose output
+
+--diagnostics               Print diagnostic information
+--use-defaults              Start with default settings
+--collaborator-server       Run in Collaborator server mode
+--collaborator-config=VAL   Specify Collaborator server configuration file; defaults to collaborator.config
+--config-file=VAL           Load the specified project configuration file(s); this option may be repeated to load multiple files
+--user-config-file=VAL      Load the specified user configuration file(s); this option may be repeated to load multiple files
+--auto-repair               Automatically repair a corrupted project file specified by the --project-file option
+```
+
+#### Stop Burp Proxy
+
+```
+echo SHUTDOWN >> /dev/tcp/127.0.0.1/4444
+or
+echo SHUTDOWN | netcat 127.0.0.1 4444
+or
+echo SHUTDOWN | ncat 127.0.0.1 4444
+```
 
 [Burp Suite]: https://portswigger.net/burp
+[BApp Store]: https://portswigger.net/bappstore/d54b11f7af3c4dfeb6b81fb5db72e381
 
 [Jenkins]: https://jenkins.io/
 [issue definitions here]: https://portswigger.net/kb/issues
@@ -366,7 +394,6 @@ The plugin is essentially a wrapper around the [Headless Burp Proxy] and [Headle
 [headless-burp-scanner-config.xsd]: https://github.com/NetsOSS/headless-burp/blob/master/headless-burp-scanner/src/main/resources/headless-burp-scanner-config.xsd
 [Headless Burp Proxy]: #headless-burp-proxy
 [Headless Burp Scanner]: #headless-burp-scanner
-
 
 [travis-build-status]: https://travis-ci.org/NetsOSS/headless-burp.svg?branch=master
 [travis-url]: https://travis-ci.org/NetsOSS/headless-burp
