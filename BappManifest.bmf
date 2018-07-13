@@ -6,7 +6,7 @@ ScreenVersion: 1.0
 SerialVersion: 1
 MinPlatformVersion: 0
 ProOnly: False
-Author: Anand Sudhir Prayaga
+Author: Anand Sudhir Prayaga, Rita Nordtug
 ShortDescription: Allows Burp Scanner to be automated, using Spider or an existing Site Map.
 EntryPoint: headless-burp-scanner/target/headless-burp-scanner-master-SNAPSHOT-jar-with-dependencies.jar
 BuildCommand: mvn package -DskipTests=true -Dmaven.javadoc.skip=true -B
