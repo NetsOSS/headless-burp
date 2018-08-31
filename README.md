@@ -3,11 +3,14 @@ Headless Burp
 
 Provides a suite of extensions and a maven plugin to automate security tests using [Burp Suite].
 
+[![BApp Store](https://img.shields.io/badge/BApp-Published-orange.svg)][BApp Store]
 [![Build Status][travis-build-status]][travis-url]
 [![Code Coverage][codecov-status]][codecov-url]
 [![Maintainability][codeclimate-rating]][codeclimate-url]
 
 Full documentation for the project is available at https://netsoss.github.io/headless-burp/
+
+Headless Burp (scanner) has now been published to the [BApp Store]
 
 ---
 
@@ -42,7 +45,6 @@ It can produce a JUnit like report which in turn could instruct the CI server (m
 
 ```
 ./mvnw
-
 ```
 The extension is packaged as a fat jar at target/headless-burp-scanner-master-SNAPSHOT-jar-with-dependencies.jar
 

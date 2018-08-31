@@ -10,7 +10,6 @@ It can produce a JUnit like report which in turn could instruct the CI server (m
 
 ```
 ./mvnw
-
 ```
 The extension is packaged as a fat jar at target/headless-burp-scanner-master-SNAPSHOT-jar-with-dependencies.jar
 
