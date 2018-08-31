@@ -47,11 +47,6 @@ public class BurpExtender implements IBurpExtender, IProxyListener, IExtensionSt
         callbacks.registerExtensionStateListener(this);
 
         try {
-            if (callbacks.getCommandLineArguments().length == 0) {
-                log("No arguments found for Headless Burp, quitting");
-                return;
-            }
-
             processCommandLineArguments(callbacks.getCommandLineArguments());
             callbacks.setProxyInterceptionEnabled(false);
 
