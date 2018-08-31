@@ -57,6 +57,7 @@ On *nix:
 ```sh
 java -Xmx1G -Djava.awt.headless=true \
 -classpath headless-burp-scanner-master-SNAPSHOT-jar-with-dependencies.jar:burpsuite_pro_v1.7.31.jar burp.StartBurp \
+--unpause-spider-and-scanner \
 --project-file=project.burp -c config.xml
 ```
 
@@ -65,6 +66,7 @@ On Cygwin:
 ```sh
 java -Xmx1G -Djava.awt.headless=true \
 -classpath "headless-burp-scanner-master-SNAPSHOT-jar-with-dependencies.jar;burpsuite_pro_v1.7.31.jar" burp.StartBurp \
+--unpause-spider-and-scanner \
 --project-file=project.burp -c config.xml
 ```
 
@@ -73,6 +75,7 @@ java -Xmx1G -Djava.awt.headless=true \
 ```sh
 java -Xmx1G -Djava.awt.headless=true \
 -classpath burpsuite_pro_v1.7.31.jar burp.StartBurp \
+--unpause-spider-and-scanner \
 --project-file=project.burp -c config.xml
 ```
 
@@ -81,6 +84,7 @@ On Cygwin:
 ```sh
 java -Xmx1G -Djava.awt.headless=true \
 -classpath "burpsuite_pro_v1.7.31.jar" burp.StartBurp \
+--unpause-spider-and-scanner \
 --project-file=project.burp -c config.xml
 ```
 
