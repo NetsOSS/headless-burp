@@ -17,7 +17,7 @@
   <description>Maven plugins that allows you to run the Burp Proxy and Scanner tools in headless mode.</description>
 
   <prerequisites>
-    <maven>3.0</maven>
+    <maven>3.5</maven>
   </prerequisites>
 
   <dependencies>
@@ -53,7 +53,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-plugin-plugin</artifactId>
-        <version>3.5</version>
+        <version>3.5.2</version>
         <configuration>
           <goalPrefix>burp</goalPrefix>
           <skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>
@@ -86,7 +86,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-        <version>2.10.4</version>
+        <version>3.0.1</version>
         <configuration>
           <minmemory>128m</minmemory>
           <maxmemory>512m</maxmemory>
