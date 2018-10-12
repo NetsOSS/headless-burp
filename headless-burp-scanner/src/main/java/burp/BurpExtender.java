@@ -221,9 +221,9 @@ public class BurpExtender implements IBurpExtender, IHttpListener, IScannerListe
     @Override
     public void newScanIssue(IScanIssue issue) {
         if (isFalsePositive(issue)) {
-            log("Excluding false positive: " + issue.getIssueName() + " at URL: " + issue.getUrl());
+            log("Excluding false positive of type: " + issue.getIssueType() + ", name: " + issue.getIssueName() + " found at URL: " + issue.getUrl());
         } else {
-            log("New scan issue found: " + issue.getIssueName() + " at URL: " + issue.getUrl());
+            log("New scan issue of type: " + issue.getIssueType() + ", name: " + issue.getIssueName() + " found at URL: " + issue.getUrl());
             scanIssues.add(issue);
         }
     }
