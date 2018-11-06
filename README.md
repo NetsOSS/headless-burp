@@ -100,7 +100,7 @@ java -Xmx1G -Djava.awt.headless=true \
     <scope> <!-- atleast one of targetSitemap or scope must be specified -->
         <url><![CDATA[http://localhost:5432/]]></url> <!-- multiple allowed -->
         <exclusions> <!-- optional -->
-            <exclusion><![CDATA[localhost:5432/#/logout]]></exclusion>
+            <exclusion><![CDATA[http://localhost:5432/#/logout]]></exclusion>
         </exclusions>
     </scope>
     <false-positives> <!-- optional -->
@@ -176,9 +176,9 @@ The extension has been designed to be versatile and support several scenarios
         <url><![CDATA[http://localhost:5432/users?search=asd]]></url>
         <url><![CDATA[http://localhost:5432/bar/foo]]></url>
         <exclusions>
-            <exclusion><![CDATA[localhost:5432/#/logout]]></exclusion>
-            <exclusion><![CDATA[localhost:5432/#/users/delete]]></exclusion>
-            <exclusion><![CDATA[localhost:5432/#/creepy/crawly]]></exclusion>
+            <exclusion><![CDATA[http://localhost:5432/#/logout]]></exclusion>
+            <exclusion><![CDATA[http://localhost:5432/#/users/delete]]></exclusion>
+            <exclusion><![CDATA[http://localhost:5432/#/creepy/crawly]]></exclusion>
         </exclusions>
     </scope>
 </config>
@@ -203,21 +203,21 @@ You can find more details about [Issue Definitions here]
         <url><![CDATA[http://localhost:5432/users?search=asd]]></url>
         <url><![CDATA[http://localhost:5432/bar/foo]]></url>
         <exclusions>
-            <exclusion><![CDATA[localhost:5432/#/logout]]></exclusion>
-            <exclusion><![CDATA[localhost:5432/#/users/delete]]></exclusion>
-            <exclusion><![CDATA[localhost:5432/#/creepy/crawly]]></exclusion>
+            <exclusion><![CDATA[http://localhost:5432/#/logout]]></exclusion>
+            <exclusion><![CDATA[http://localhost:5432/#/users/delete]]></exclusion>
+            <exclusion><![CDATA[http://localhost:5432/#/creepy/crawly]]></exclusion>
         </exclusions>
-        <false-positives>
-            <issue>
-                <type>5244416</type>
-                <path>.*</path>
-            </issue>
-            <issue>
-                <type>5247488</type>
-                <path>.*bower_components.*</path>
-            </issue>
-        </false-positives>
     </scope>
+    <false-positives>
+        <issue>
+            <type>5244416</type>
+            <path>.*</path>
+        </issue>
+        <issue>
+            <type>5247488</type>
+            <path>.*bower_components.*</path>
+        </issue>
+    </false-positives>
 </config>
 ```
 
@@ -248,15 +248,15 @@ The [Headless Burp Proxy] extension provides an simple way to achieve this.
     <scope>
         <url><![CDATA[http://localhost:5432]]></url>
         <exclusions>
-            <exclusion><![CDATA[localhost:5432/#/logout]]></exclusion>
+            <exclusion><![CDATA[http://localhost:5432/#/logout]]></exclusion>
         </exclusions>
-        <false-positives>
-            <issue>
-                <type>5244416</type>
-                <path>.*</path>
-            </issue>
-        </false-positives>
     </scope>
+    <false-positives>
+        <issue>
+            <type>5244416</type>
+            <path>.*</path>
+        </issue>
+    </false-positives>
 </config>
 ```
 
