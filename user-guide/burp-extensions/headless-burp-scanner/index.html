@@ -786,7 +786,7 @@ The extension is packaged as a fat jar at target/headless-burp-scanner-master-SN
     <span class="nt">&lt;scope&gt;</span> <span class="c">&lt;!-- atleast one of targetSitemap or scope must be specified --&gt;</span>
         <span class="nt">&lt;url&gt;</span><span class="cp">&lt;![CDATA[http://localhost:5432/]]&gt;</span><span class="nt">&lt;/url&gt;</span> <span class="c">&lt;!-- multiple allowed --&gt;</span>
         <span class="nt">&lt;exclusions&gt;</span> <span class="c">&lt;!-- optional --&gt;</span>
-            <span class="nt">&lt;exclusion&gt;</span><span class="cp">&lt;![CDATA[localhost:5432/#/logout]]&gt;</span><span class="nt">&lt;/exclusion&gt;</span>
+            <span class="nt">&lt;exclusion&gt;</span><span class="cp">&lt;![CDATA[http://localhost:5432/#/logout]]&gt;</span><span class="nt">&lt;/exclusion&gt;</span>
         <span class="nt">&lt;/exclusions&gt;</span>
     <span class="nt">&lt;/scope&gt;</span>
     <span class="nt">&lt;false-positives&gt;</span> <span class="c">&lt;!-- optional --&gt;</span>
@@ -856,9 +856,9 @@ The extension is packaged as a fat jar at target/headless-burp-scanner-master-SN
         <span class="nt">&lt;url&gt;</span><span class="cp">&lt;![CDATA[http://localhost:5432/users?search=asd]]&gt;</span><span class="nt">&lt;/url&gt;</span>
         <span class="nt">&lt;url&gt;</span><span class="cp">&lt;![CDATA[http://localhost:5432/bar/foo]]&gt;</span><span class="nt">&lt;/url&gt;</span>
         <span class="nt">&lt;exclusions&gt;</span>
-            <span class="nt">&lt;exclusion&gt;</span><span class="cp">&lt;![CDATA[localhost:5432/#/logout]]&gt;</span><span class="nt">&lt;/exclusion&gt;</span>
-            <span class="nt">&lt;exclusion&gt;</span><span class="cp">&lt;![CDATA[localhost:5432/#/users/delete]]&gt;</span><span class="nt">&lt;/exclusion&gt;</span>
-            <span class="nt">&lt;exclusion&gt;</span><span class="cp">&lt;![CDATA[localhost:5432/#/creepy/crawly]]&gt;</span><span class="nt">&lt;/exclusion&gt;</span>
+            <span class="nt">&lt;exclusion&gt;</span><span class="cp">&lt;![CDATA[http://localhost:5432/#/logout]]&gt;</span><span class="nt">&lt;/exclusion&gt;</span>
+            <span class="nt">&lt;exclusion&gt;</span><span class="cp">&lt;![CDATA[http://localhost:5432/#/users/delete]]&gt;</span><span class="nt">&lt;/exclusion&gt;</span>
+            <span class="nt">&lt;exclusion&gt;</span><span class="cp">&lt;![CDATA[http://localhost:5432/#/creepy/crawly]]&gt;</span><span class="nt">&lt;/exclusion&gt;</span>
         <span class="nt">&lt;/exclusions&gt;</span>
     <span class="nt">&lt;/scope&gt;</span>
 <span class="nt">&lt;/config&gt;</span>
@@ -883,21 +883,21 @@ You can find more details about <a href="https://portswigger.net/kb/issues">Issu
         <span class="nt">&lt;url&gt;</span><span class="cp">&lt;![CDATA[http://localhost:5432/users?search=asd]]&gt;</span><span class="nt">&lt;/url&gt;</span>
         <span class="nt">&lt;url&gt;</span><span class="cp">&lt;![CDATA[http://localhost:5432/bar/foo]]&gt;</span><span class="nt">&lt;/url&gt;</span>
         <span class="nt">&lt;exclusions&gt;</span>
-            <span class="nt">&lt;exclusion&gt;</span><span class="cp">&lt;![CDATA[localhost:5432/#/logout]]&gt;</span><span class="nt">&lt;/exclusion&gt;</span>
-            <span class="nt">&lt;exclusion&gt;</span><span class="cp">&lt;![CDATA[localhost:5432/#/users/delete]]&gt;</span><span class="nt">&lt;/exclusion&gt;</span>
-            <span class="nt">&lt;exclusion&gt;</span><span class="cp">&lt;![CDATA[localhost:5432/#/creepy/crawly]]&gt;</span><span class="nt">&lt;/exclusion&gt;</span>
+            <span class="nt">&lt;exclusion&gt;</span><span class="cp">&lt;![CDATA[http://localhost:5432/#/logout]]&gt;</span><span class="nt">&lt;/exclusion&gt;</span>
+            <span class="nt">&lt;exclusion&gt;</span><span class="cp">&lt;![CDATA[http://localhost:5432/#/users/delete]]&gt;</span><span class="nt">&lt;/exclusion&gt;</span>
+            <span class="nt">&lt;exclusion&gt;</span><span class="cp">&lt;![CDATA[http://localhost:5432/#/creepy/crawly]]&gt;</span><span class="nt">&lt;/exclusion&gt;</span>
         <span class="nt">&lt;/exclusions&gt;</span>
-        <span class="nt">&lt;false-positives&gt;</span>
-            <span class="nt">&lt;issue&gt;</span>
-                <span class="nt">&lt;type&gt;</span>5244416<span class="nt">&lt;/type&gt;</span>
-                <span class="nt">&lt;path&gt;</span>.*<span class="nt">&lt;/path&gt;</span>
-            <span class="nt">&lt;/issue&gt;</span>
-            <span class="nt">&lt;issue&gt;</span>
-                <span class="nt">&lt;type&gt;</span>5247488<span class="nt">&lt;/type&gt;</span>
-                <span class="nt">&lt;path&gt;</span>.*bower_components.*<span class="nt">&lt;/path&gt;</span>
-            <span class="nt">&lt;/issue&gt;</span>
-        <span class="nt">&lt;/false-positives&gt;</span>
     <span class="nt">&lt;/scope&gt;</span>
+    <span class="nt">&lt;false-positives&gt;</span>
+        <span class="nt">&lt;issue&gt;</span>
+            <span class="nt">&lt;type&gt;</span>5244416<span class="nt">&lt;/type&gt;</span>
+            <span class="nt">&lt;path&gt;</span>.*<span class="nt">&lt;/path&gt;</span>
+        <span class="nt">&lt;/issue&gt;</span>
+        <span class="nt">&lt;issue&gt;</span>
+            <span class="nt">&lt;type&gt;</span>5247488<span class="nt">&lt;/type&gt;</span>
+            <span class="nt">&lt;path&gt;</span>.*bower_components.*<span class="nt">&lt;/path&gt;</span>
+        <span class="nt">&lt;/issue&gt;</span>
+    <span class="nt">&lt;/false-positives&gt;</span>
 <span class="nt">&lt;/config&gt;</span>
 </pre></div>
 
@@ -924,15 +924,15 @@ The <a href="headless-burp-proxy">Headless Burp Proxy</a> extension provides an 
     <span class="nt">&lt;scope&gt;</span>
         <span class="nt">&lt;url&gt;</span><span class="cp">&lt;![CDATA[http://localhost:5432]]&gt;</span><span class="nt">&lt;/url&gt;</span>
         <span class="nt">&lt;exclusions&gt;</span>
-            <span class="nt">&lt;exclusion&gt;</span><span class="cp">&lt;![CDATA[localhost:5432/#/logout]]&gt;</span><span class="nt">&lt;/exclusion&gt;</span>
+            <span class="nt">&lt;exclusion&gt;</span><span class="cp">&lt;![CDATA[http://localhost:5432/#/logout]]&gt;</span><span class="nt">&lt;/exclusion&gt;</span>
         <span class="nt">&lt;/exclusions&gt;</span>
-        <span class="nt">&lt;false-positives&gt;</span>
-            <span class="nt">&lt;issue&gt;</span>
-                <span class="nt">&lt;type&gt;</span>5244416<span class="nt">&lt;/type&gt;</span>
-                <span class="nt">&lt;path&gt;</span>.*<span class="nt">&lt;/path&gt;</span>
-            <span class="nt">&lt;/issue&gt;</span>
-        <span class="nt">&lt;/false-positives&gt;</span>
     <span class="nt">&lt;/scope&gt;</span>
+    <span class="nt">&lt;false-positives&gt;</span>
+        <span class="nt">&lt;issue&gt;</span>
+            <span class="nt">&lt;type&gt;</span>5244416<span class="nt">&lt;/type&gt;</span>
+            <span class="nt">&lt;path&gt;</span>.*<span class="nt">&lt;/path&gt;</span>
+        <span class="nt">&lt;/issue&gt;</span>
+    <span class="nt">&lt;/false-positives&gt;</span>
 <span class="nt">&lt;/config&gt;</span>
 </pre></div>
 

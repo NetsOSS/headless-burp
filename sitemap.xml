@@ -2,62 +2,62 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
      <loc>https://NetsOSS.github.io/headless-burp/</loc>
-     <lastmod>2018-08-31</lastmod>
+     <lastmod>2018-11-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://NetsOSS.github.io/headless-burp/getting-started/</loc>
-     <lastmod>2018-08-31</lastmod>
+     <lastmod>2018-11-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://NetsOSS.github.io/headless-burp/background/background/</loc>
-     <lastmod>2018-08-31</lastmod>
+     <lastmod>2018-11-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://NetsOSS.github.io/headless-burp/background/our-goal/</loc>
-     <lastmod>2018-08-31</lastmod>
+     <lastmod>2018-11-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://NetsOSS.github.io/headless-burp/background/burp/</loc>
-     <lastmod>2018-08-31</lastmod>
+     <lastmod>2018-11-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://NetsOSS.github.io/headless-burp/background/automation/</loc>
-     <lastmod>2018-08-31</lastmod>
+     <lastmod>2018-11-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://NetsOSS.github.io/headless-burp/user-guide/installation/</loc>
-     <lastmod>2018-08-31</lastmod>
+     <lastmod>2018-11-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://NetsOSS.github.io/headless-burp/user-guide/burp-extensions/headless-burp-proxy/</loc>
-     <lastmod>2018-08-31</lastmod>
+     <lastmod>2018-11-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://NetsOSS.github.io/headless-burp/user-guide/burp-extensions/headless-burp-scanner/</loc>
-     <lastmod>2018-08-31</lastmod>
+     <lastmod>2018-11-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://NetsOSS.github.io/headless-burp/user-guide/maven-plugin/usage/</loc>
-     <lastmod>2018-08-31</lastmod>
+     <lastmod>2018-11-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://NetsOSS.github.io/headless-burp/known-issues/</loc>
-     <lastmod>2018-08-31</lastmod>
+     <lastmod>2018-11-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://NetsOSS.github.io/headless-burp/release-notes/release-notes-1.0/</loc>
-     <lastmod>2018-08-31</lastmod>
+     <lastmod>2018-11-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>
