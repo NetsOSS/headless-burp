@@ -81,6 +81,9 @@ public class BurpExtender implements IBurpExtender, IHttpListener, IScannerListe
     private void scanSiteMap(URL siteMapUrlPrefix) {
         if (siteMapUrlPrefix != null) {
             IHttpRequestResponse[] siteMapItems = callbacks.getSiteMap(config.getSiteMap().toString());
+            if (siteMapItems == null) {
+                return;
+            }
             log("Scanning [" + siteMapItems.length + "] from sitemap [" + config.getSiteMap().toString() + "]");
             for (IHttpRequestResponse siteMapItem : siteMapItems) {
                 IRequestInfo requestInfo = helpers.analyzeRequest(siteMapItem);
