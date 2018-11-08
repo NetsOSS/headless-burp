@@ -59,7 +59,7 @@ java -Xmx1G -Djava.awt.headless=true \
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<config xmlns="http://nets.eu/burp/config">
+<config>
     <reportType>HTML</reportType> <!-- JUNIT|HTML|XML -->
     <targetSitemap><![CDATA[http://localhost:5432]]></targetSitemap> <!-- atleast one of targetSitemap or scope must be specified -->
     <scope> <!-- atleast one of targetSitemap or scope must be specified -->
@@ -110,7 +110,7 @@ The extension has been designed to be versatile and support several scenarios
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<config xmlns="http://nets.eu/burp/config">
+<config>
     <reportType>HTML</reportType>
     <targetSitemap><![CDATA[http://localhost:5432]]></targetSitemap>
     <scope>
@@ -131,7 +131,7 @@ The extension has been designed to be versatile and support several scenarios
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<config xmlns="http://nets.eu/burp/config">
+<config>
     <reportType>HTML</reportType>
     <targetSitemap><![CDATA[http://localhost:5432]]></targetSitemap>
     <scope>
@@ -158,7 +158,7 @@ You can find more details about [Issue Definitions here]
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<config xmlns="http://nets.eu/burp/config">
+<config>
     <reportType>HTML</reportType>
     <targetSitemap><![CDATA[http://localhost:5432]]></targetSitemap>
     <scope>
@@ -207,7 +207,7 @@ The [Headless Burp Proxy] extension provides an simple way to achieve this.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<config xmlns="http://nets.eu/burp/config">
+<config>
     <reportType>HTML</reportType>
     <targetSitemap><![CDATA[http://localhost:5432]]></targetSitemap>
     <scope>

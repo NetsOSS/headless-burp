@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<config xmlns="http://nets.eu/burp/config">
+<config>
   <reportType>JUNIT</reportType>
+  <targetSitemap><![CDATA[http://localhost:20756/]]></targetSitemap>
   <scope>
     <url><![CDATA[http://localhost:20756/#/shipments]]></url>
     <url><![CDATA[http://localhost:20756/api/customers/identifiers?cacheBuster=1427106938056&searchTerm=982]]></url>

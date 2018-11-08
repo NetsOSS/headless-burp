@@ -21,6 +21,7 @@ public class BurpConfigurationTest {
         assertThat(burpConfiguration.getUrls()).hasSize(3);
         assertThat(burpConfiguration.getReportType()).isEqualTo(ReportType.JUNIT);
         assertThat(burpConfiguration.getFalsePositives()).hasSize(2);
+        assertThat(burpConfiguration.getSiteMap().toString()).isEqualTo("http://localhost:20756/");
 
         assertThat(burpConfiguration.getScanReportType()).isEqualTo("XML");
         assertThat(burpConfiguration.getReportFile().getName()).contains("burp-report");

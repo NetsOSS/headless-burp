@@ -1,10 +1,15 @@
 package eu.nets.burp;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import com.fasterxml.jackson.module.jaxb.JaxbAnnotationModule;
 import eu.nets.burp.config.Config;
 import eu.nets.burp.config.Issue;
 import eu.nets.burp.config.ReportType;
 import eu.nets.burp.config.Scope;
 import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Collections;
@@ -15,8 +20,6 @@ import java.util.Optional;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 import java.util.stream.Collectors;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Unmarshaller;
 
 public class BurpConfiguration {
 
@@ -28,14 +31,15 @@ public class BurpConfiguration {
 
     private Config loadConfiguration(File configurationFile) {
         try {
-            JAXBContext jaxbContext = JAXBContext.newInstance(Config.class);
-            Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+            ObjectMapper objectMapper = new XmlMapper()
+                    .registerModule(new JaxbAnnotationModule())
+                    .enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY);
 
-            Config configuration = (Config) jaxbUnmarshaller.unmarshal(configurationFile);
+            Config configuration = objectMapper.readValue(configurationFile, Config.class);
             validateConfig(configuration);
 
             return configuration;
-        } catch (Exception e) {
+        } catch (IOException e) {
             throw new RuntimeException("Could not parse configuration file [" + configurationFile.getName() + "]", e);
         }
     }
