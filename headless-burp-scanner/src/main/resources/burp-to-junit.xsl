@@ -28,17 +28,6 @@
               <xsl:text>Request:</xsl:text>
               <xsl:value-of select="$newline" disable-output-escaping="no"/>
               <xsl:value-of disable-output-escaping="yes" select="base64:decodeBase64(requestresponse/request)"/>
-<!--              <xsl:text>Response:</xsl:text>
-              <xsl:value-of select="$newline" disable-output-escaping="no"/>
-              <xsl:choose>
-                <xsl:when test="string-length(base64:decodeBase64(requestresponse/response)) &gt; 1000">
-                  <xsl:value-of disable-output-escaping="no"
-                                select="substring(base64:decodeBase64(requestresponse/response), 0, 1000)"/>...
-                </xsl:when>
-                <xsl:otherwise>
-                  <xsl:value-of disable-output-escaping="no" select="base64:decodeBase64(requestresponse/response)"/>
-                </xsl:otherwise>
-              </xsl:choose>-->
               <xsl:text disable-output-escaping="yes">]]&gt;</xsl:text>
             </system-out>
           </testcase>
