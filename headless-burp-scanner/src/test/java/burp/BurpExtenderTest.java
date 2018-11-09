@@ -3,7 +3,6 @@ package burp;
 import eu.nets.burp.BurpConfiguration;
 import eu.nets.burp.config.Issue;
 import java.io.File;
-import java.io.OutputStream;
 import java.net.URL;
 import org.junit.Before;
 import org.junit.Rule;
@@ -41,11 +40,6 @@ public class BurpExtenderTest {
 
     @Before
     public void setUp() {
-        OutputStream stdOut = mock(OutputStream.class);
-        OutputStream stdErr = mock(OutputStream.class);
-        when(burpExtenderCallbacks.getStdout()).thenReturn(stdOut);
-        when(burpExtenderCallbacks.getStderr()).thenReturn(stdErr);
-
         configurationFile = new File("src/test/resources/config.xml");
     }
 

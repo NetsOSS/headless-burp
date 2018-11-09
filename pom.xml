@@ -18,6 +18,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>1.8</java.version>
+    <javac.version>9+181-r4173-1</javac.version>
     <dependency-check.skip>false</dependency-check.skip>
     <checkstyle-config.location>${project.basedir}</checkstyle-config.location>
     <spotbugs-excludefilter.location>${project.basedir}/../spotbugs-excludefilter.xml
@@ -60,7 +61,7 @@
     <dependency>
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
-      <version>26.0-jre</version>
+      <version>27.0-jre</version>
     </dependency>
 
     <dependency>
@@ -85,7 +86,7 @@
     <dependency>
       <groupId>org.mockito</groupId>
       <artifactId>mockito-core</artifactId>
-      <version>1.10.8</version>
+      <version>2.23.0</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -123,9 +124,9 @@
           <rules>
             <requireMavenVersion>
               <message>You are running an older version of Maven. headless-burp requires at least Maven
-                3.0
+                3.2
               </message>
-              <version>[3.0,)</version>
+              <version>[3.2,)</version>
             </requireMavenVersion>
             <requireJavaVersion>
               <message>You are running an older version of Java. headless-burp requires at least JDK
@@ -153,24 +154,21 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.8.0</version>
         <configuration>
-          <compilerId>javac-with-errorprone</compilerId>
           <encoding>UTF-8</encoding>
           <source>${java.version}</source>
           <target>${java.version}</target>
-          <forceJavacCompilerUse>true</forceJavacCompilerUse>
+          <compilerArgs>
+            <arg>-XDcompilePolicy=simple</arg>
+            <arg>-Xplugin:ErrorProne</arg>
+          </compilerArgs>
+          <annotationProcessorPaths>
+            <path>
+              <groupId>com.google.errorprone</groupId>
+              <artifactId>error_prone_core</artifactId>
+              <version>2.3.2</version>
+            </path>
+          </annotationProcessorPaths>
         </configuration>
-        <dependencies>
-          <dependency>
-            <groupId>org.codehaus.plexus</groupId>
-            <artifactId>plexus-compiler-javac-errorprone</artifactId>
-            <version>2.8.5</version>
-          </dependency>
-          <dependency>
-            <groupId>com.google.errorprone</groupId>
-            <artifactId>error_prone_core</artifactId>
-            <version>2.3.1</version>
-          </dependency>
-        </dependencies>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -180,7 +178,7 @@
           <dependency>
             <groupId>com.puppycrawl.tools</groupId>
             <artifactId>checkstyle</artifactId>
-            <version>8.12</version>
+            <version>8.14</version>
           </dependency>
         </dependencies>
         <executions>
@@ -208,7 +206,7 @@
       <plugin>
         <groupId>com.github.spotbugs</groupId>
         <artifactId>spotbugs-maven-plugin</artifactId>
-        <version>3.1.6</version>
+        <version>3.1.8</version>
         <configuration>
           <effort>Max</effort>
           <threshold>Low</threshold>
@@ -235,7 +233,7 @@
       <plugin>
         <groupId>org.owasp</groupId>
         <artifactId>dependency-check-maven</artifactId>
-        <version>3.3.1</version>
+        <version>3.3.4</version>
         <configuration>
           <cveValidForHours>12</cveValidForHours>
           <failBuildOnCVSS>4</failBuildOnCVSS>
@@ -294,6 +292,28 @@
         <spotbugs.skip>true</spotbugs.skip>
         <dependency-check.skip>true</dependency-check.skip>
       </properties>
+    </profile>
+    <profile>
+      <id>jdk8</id>
+      <activation>
+        <jdk>1.8</jdk>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+              <fork>true</fork>
+              <compilerArgs combine.children="append">
+                <arg>
+                  -J-Xbootclasspath/p:${settings.localRepository}/com/google/errorprone/javac/${javac.version}/javac-${javac.version}.jar
+                </arg>
+              </compilerArgs>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
     </profile>
   </profiles>
 

@@ -3,7 +3,6 @@ package eu.nets.burp;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import com.fasterxml.jackson.module.jaxb.JaxbAnnotationModule;
 import eu.nets.burp.config.Config;
 import eu.nets.burp.config.Issue;
 import eu.nets.burp.config.ReportType;
@@ -32,7 +31,6 @@ public class BurpConfiguration {
     private Config loadConfiguration(File configurationFile) {
         try {
             ObjectMapper objectMapper = new XmlMapper()
-                    .registerModule(new JaxbAnnotationModule())
                     .enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY);
 
             Config configuration = objectMapper.readValue(configurationFile, Config.class);

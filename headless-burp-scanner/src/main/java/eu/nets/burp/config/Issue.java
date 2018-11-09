@@ -1,20 +1,12 @@
 package eu.nets.burp.config;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "issue", propOrder = {
-        "type",
-        "path"
-})
 public class Issue {
 
     private int type;
 
-    @XmlElement(required = true)
+    @JsonProperty(required = true)
     private String path;
 
     public int getType() {

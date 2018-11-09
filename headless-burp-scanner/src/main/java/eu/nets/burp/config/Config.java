@@ -1,32 +1,20 @@
 package eu.nets.burp.config;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-        "reportType",
-        "scope",
-        "targetSitemap",
-        "falsePositives"
-})
-@XmlRootElement(name = "config")
+@JacksonXmlRootElement
 public class Config {
 
-    @XmlElement(required = true)
-    @XmlSchemaType(name = "string")
+    @JsonProperty(required = true)
     private ReportType reportType;
 
     private Scope scope;
 
-    @XmlSchemaType(name = "anyURI")
     private String targetSitemap;
 
-    @XmlElement(name = "false-positives")
+    @JacksonXmlProperty(localName = "false-positives")
     private FalsePositives falsePositives;
 
     public ReportType getReportType() {
