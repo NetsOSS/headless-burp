@@ -30,9 +30,9 @@ java -Xmx1G -Djava.awt.headless=true \
 
 ```
 --project-file=VAL          Open the specified project file; this will be created as a new project if the file does not exist (mandatory)
---proxyPort VAL             Proxy port
---shutdownPort VAL          Shutdown port
---shutdownKey VAL           Shutdown key
+--proxy-port VAL            Proxy port
+--shutdown-port VAL         Shutdown port
+--shutdown-key VAL          Shutdown key
 -p (--prompt)               Indicates whether to prompt the user to confirm the shutdown (useful for debugging)
 -v (--verbose)              Enable verbose output
 
