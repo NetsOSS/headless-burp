@@ -19,7 +19,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>1.8</java.version>
     <javac.version>9+181-r4173-1</javac.version>
-    <dependency-check.skip>false</dependency-check.skip>
+    <dependency-check.skip>true</dependency-check.skip>
     <checkstyle-config.location>${project.basedir}</checkstyle-config.location>
     <spotbugs-excludefilter.location>${project.basedir}/../spotbugs-excludefilter.xml
     </spotbugs-excludefilter.location>
